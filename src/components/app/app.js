@@ -1,24 +1,32 @@
-import logo from '../../images/logo.svg';
-import './app.css';
+import React from 'react';
+import {Route, Routes} from 'react-router-dom';
 
-function App() {
+import Main from '../main/main';
+import Movies from '../movies/movies';
+import SavedMovies from '../saved-movies/saved-movies';
+import Profile from '../profile/profile';
+import Register from '../register/register';
+import Login from '../login/login';
+
+function App()
+{
+  // Регистрация
+  function signCreate(email, password)
+  { }
+
+  // Авторизация
+  function signIn(email, password)
+  { }  
+
   return (
-    <div className="app">
-      <header className="app-header">
-        <img src={logo} className="app-logo" alt="logo" />
-        <p>
-          Edit <code>src/app.js</code> and save to reload.
-        </p>
-        <a
-          className="app-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Main/>} />
+      <Route path="/movies" element={<Movies/>} />
+      <Route path="/saved-movies" element={<SavedMovies/>} />
+      <Route path="/profile" element={<Profile/>} />
+      <Route path="/signup" element={<Register onSubmit={signCreate} />} />
+      <Route path="/signin" element={<Login onSubmit={signIn} />} />
+    </Routes>
   );
 }
 
