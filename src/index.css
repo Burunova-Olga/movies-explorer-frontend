@@ -2,6 +2,7 @@
 @import url(./vendor/fonts/fonts.css);
 
 @import url(./components/app/app.css);
+@import url(./components/page/page.css);
 
 /* main */
 @import url(./components/main/main.css);

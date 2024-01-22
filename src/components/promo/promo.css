@@ -1,25 +1,14 @@
 .promo
 {
-  font-family: "Inter", 'Times New Roman', Times, serif;
-
   margin: 0;
   padding: 0;
   height: 524px;
 
   background-color: rgb(7, 48, 66);
-  color: rgb(255, 255, 255);
 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-}
-
-@media screen and (max-width: 768px)
-{
-  .promo
-  {
-    height: 784px;
-  }
 }
 
 .promo__image
@@ -50,4 +39,40 @@
 
   grid-column: 1/2;
   grid-row: 1/2;
+}
+
+@media screen and (max-width: 768px)
+{
+  .promo
+  {
+    height: 784px;
+  }
+  
+  .promo__header
+  {      
+    margin-top: 326px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .promo
+  {
+    height: 570px;
+  }
+
+  .promo__image
+  {
+    opacity: 0.13;  
+    background-size: 248px 248px;
+  }
+  
+  .promo__header
+  {      
+    margin-top: 207px;
+    max-width: 300px;
+
+    font-size: 31px;
+    line-height: 39px;
+  }
 }

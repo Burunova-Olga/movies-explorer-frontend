@@ -1,0 +1,32 @@
+.nav-tab
+{
+  margin: 0;
+  padding: 0;
+  height: 66px;
+
+  background-color: rgb(39, 39, 39);
+
+  display: flex;
+}
+
+.nav-tab__list
+{
+  padding: 0;
+  margin: auto;
+
+  display: flex;
+  gap: 40px;
+  
+  list-style-type: none;
+}
+
+.nav-tab__link
+{
+  padding: 0;
+  margin: 0;
+
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+}
