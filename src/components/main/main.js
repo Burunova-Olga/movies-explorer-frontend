@@ -6,6 +6,7 @@ import Promo from '../promo/promo';
 import NavTab from '../nav-tab/nav-tab';
 import AboutProject from '../about-project/about-project';
 import Techs from '../techs/techs';
+import AboutMe from '../about-me/about-me';
 
 function Main()
 {
@@ -15,6 +16,7 @@ function Main()
       <NavTab />
       <AboutProject />
       <Techs />
+      <AboutMe />
     </main>
   );
 }
