@@ -3,6 +3,7 @@
 
 @import url(./components/app/app.css);
 @import url(./components/page/page.css);
+@import url(./components/section/section.css);
 
 /* main */
 @import url(./components/main/main.css);

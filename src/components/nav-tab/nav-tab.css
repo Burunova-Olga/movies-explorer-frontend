@@ -9,6 +9,8 @@
   display: flex;
 }
 
+/*********************************************/
+
 .nav-tab__list
 {
   padding: 0;
@@ -19,6 +21,16 @@
   
   list-style-type: none;
 }
+
+@media screen and (max-width: 320px)
+{
+  .nav-tab__list
+  {
+    gap: 24px;
+  }
+}
+
+/*********************************************/
 
 .nav-tab__link
 {
@@ -33,11 +45,6 @@
 
 @media screen and (max-width: 320px)
 {
-  .nav-tab__list
-  {
-    gap: 24px;
-  }
-
   .nav-tab__link
   {
     font-size: 11px;

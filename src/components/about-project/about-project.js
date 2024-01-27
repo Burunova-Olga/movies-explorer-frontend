@@ -5,8 +5,8 @@ import React from 'react';
 function AboutProject()
 {
   return (
-    <section className="about-project">
-      <h2 className="about-project__header">О проекте</h2>
+    <section className="section about-project">
+      <h2 className="section__header about-project__header">О проекте</h2>
       
       <article className="two-columns">
         <div className="two_columns__column">
