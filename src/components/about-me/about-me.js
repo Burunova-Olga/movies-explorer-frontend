@@ -6,7 +6,7 @@ import photo from '../../images/my_photo.jpg';
 function AboutMe()
 {
   return (
-    <section className="section about-me">
+    <section id="about-me" className="section about-me">
       <h2 className="section__header about-me__header">Студент</h2>
       
       <div className='about-me__columns'>
@@ -17,7 +17,7 @@ function AboutMe()
           Закончила факультет вычислительной техники ПГУ. Первые программы были написаны еще в 2007 году, 
           и с тех пор я существенно улучшила свои навыки. С 2018 года работаю в НПО "Наука". 
           </p>
-          <p className='about-me__link'>Github</p>
+          <a target="_blank" href="https://github.com/Burunova-Olga" className='about-me__link'>Github</a>
         </article>
         <div style={{ backgroundImage: `url(${photo})` }} className="about-me__photo" />
       </div>
@@ -26,15 +26,15 @@ function AboutMe()
       <ul className='about-me_projects'>
         <li className="project">
           <p className="project__name">Статичный сайт</p>
-          <p className="project__link">↗</p>          
+          <a target="_blank" href="https://github.com/Burunova-Olga/how-to-learn" className="project__link">↗</a>          
         </li>
         <li class="project">
           <p className="project__name">Адаптивный сайт</p>
-          <p className="project__link">↗</p>
+          <a target="_blank" href="https://github.com/Burunova-Olga/russian-travel" className="project__link">↗</a>
         </li>
         <li class="project">
           <p className="project__name">Одностраничное приложение</p>
-          <p className="project__link">↗</p>
+          <a target="_blank" href="https://github.com/Burunova-Olga/react-mesto-api-full-gha" className="project__link">↗</a>
         </li>
       </ul>
     </section>

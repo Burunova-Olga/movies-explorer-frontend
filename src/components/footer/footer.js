@@ -11,8 +11,8 @@ function Footer()
       <div className="info">
         <p className="info__year">© 2024</p>
         <div className="info__items">
-          <p className="info__item">Яндекс.Практикум</p>   
-          <p className="info__item">Github</p>       
+          <a target="_blank" href="https://practicum.yandex.ru" className="info__item">Яндекс.Практикум</a>
+          <a target="_blank" href="https://github.com" className="info__item">Github</a>
         </div>
       </div>
     </section>

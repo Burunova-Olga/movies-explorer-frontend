@@ -47,16 +47,26 @@
 .about-me__columns
 {
   padding: 66px 0 0;
+  height: 327px;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
+@media screen and (max-width: 768px)
+{  
+  .about-me__columns
+  {
+    height: 307px;
+  }
+}
+
 @media screen and (max-width: 320px)
 {
   .about-me__columns
   {
+    height: min-content;
     padding-top: 60px;
     flex-direction: column-reverse;
   }
@@ -68,8 +78,13 @@
 {
   margin: 0;
   padding: 0;
+  height: 100%;
+
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 /*********************************************/
@@ -175,20 +190,22 @@
 {
   margin: 0;
   padding: 0;
-  
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
+
+  position: absolute;
+  bottom: 0;
 
   font-weight: 500;
   font-size: 14px;
   line-height: 16,94px;
+  color:rgb(255, 255, 255);
+  text-decoration:none;
 }
 
 @media screen and (max-width: 320px)
 {
   .about-me__link
   {
+  position: relative;
     margin-top: 40px;
   }
 }
@@ -200,7 +217,7 @@
   margin: 0;
   padding: 0;
   width: 270px;
-  height: 327px;
+  height: 100%;
   border-radius: 10px;
 
   background-size: cover;
@@ -213,7 +230,6 @@
   .about-me__photo
   {
     width: 255px;
-    height: 307px;
   }
 }
 
@@ -328,4 +344,6 @@
 {
   margin: 0;
   padding: 0;  
+  text-decoration: none;
+  color: rgb(255, 255, 255);
 }

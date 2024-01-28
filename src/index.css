@@ -23,6 +23,7 @@
 @import url(./components/movies-card/movies-card.css);
 
 /* profile */
+@import url(./components/auth-form/auth-form.css);
 @import url(./components/register/register.css);
 @import url(./components/login/login.css);
 @import url(./components/profile/profile.css);
