@@ -1,12 +1,12 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 
-import Main from '../main/main';
-import Movies from '../movies/movies';
-import SavedMovies from '../saved-movies/saved-movies';
+import Main from '../page-main/main/main';
+import Movies from '../page-movies/movies/movies';
+import SavedMovies from '../page-movies/saved-movies/saved-movies';
 import Profile from '../profile/profile';
-import Register from '../register/register';
-import Login from '../login/login';
+import Register from '../page-auth/register/register';
+import Login from '../page-auth/login/login';
 
 function App()
 {
