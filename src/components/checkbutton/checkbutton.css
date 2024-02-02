@@ -1,0 +1,83 @@
+.checkbutton
+{  
+  padding: 0;
+  margin: 41px 0 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbutton__input
+{  
+  width: 1px;
+  height: 1px;
+  box-sizing: border-box;
+
+  position: absolute;
+
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+  border: 0;
+}
+
+.checkbutton__label-text
+{  
+  padding: 0;
+  margin: 0 0 0 12px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.checkbutton__pseudo
+{
+  padding: 0;
+  margin: 0;
+
+  width: 36px;
+  height: 20px;  
+  border-radius: 10px;
+  
+  position: relative;
+  display: inline-block; 
+  vertical-align:top; 
+
+  background-color: rgb(52, 52, 52);
+
+  transition: all 0.3s cubic-bezier(0.8, 0.86, 0.42, 1.3);
+}
+
+.checkbutton__input:checked + .checkbutton__pseudo
+{
+  background-color: rgb(43, 224, 128);
+}
+
+.checkbutton__pseudo::after
+{
+  margin: 0;
+  padding: 0;
+
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  content: "";
+
+  display: inline-block;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+
+  background-color: rgb(160, 160, 160);
+
+  transform: translateX(0);
+}
+
+.checkbutton__input:checked + .checkbutton__pseudo::after
+{
+  background-color: rgb(255, 255, 255);
+  transform: translateX(17px);
+}
+
