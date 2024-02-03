@@ -18,7 +18,7 @@ function AboutMe()
           Закончила факультет вычислительной техники ПГУ. Первые программы были написаны еще в 2007 году, 
           и с тех пор я существенно улучшила свои навыки. С 2018 года работаю в НПО "Наука". 
           </p>
-          <a target="_blank" href="https://github.com/Burunova-Olga" className='about-me__link'>Github</a>
+          <a target="_blank" href="https://github.com/Burunova-Olga" className='link about-me__link'>Github</a>
         </article>
         <div style={{ backgroundImage: `url(${photo})` }} className="about-me__photo" />
       </div>

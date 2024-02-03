@@ -10,9 +10,9 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
   const {formValues, handleChange, setFormValues} = useForm ({ name: '', email: '', password: ''});
  
   useEffect(() => {
-    const origFontStyle = document.body.style.backgroundColor;
-    document.body.style.backgroundColor = "rgb(0, 0, 0)";
-    return () => document.body.style.backgroundColor = origFontStyle;
+    const origBodyStyle = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = "rgb(32, 32, 32)";
+    return () => document.body.style.backgroundColor = origBodyStyle;
   }, []);
 
   const handleSubmit = (e) =>
@@ -43,12 +43,12 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
           <input type="password" className="auth-form__input" name="password" id="input-password"
             value={formValues.password} onChange={handleChange} required />
     
-          <input type="submit" className="auth-form__submit" value={submmitText} />
+          <input type="submit" className="button auth-form__submit" value={submmitText} />
         </form>
 
         <div className="auth-form__question">
           <p>{questionText}</p>
-          <Link to={link} className="auth-form__link link">{linkText}</Link>
+          <Link to={link} className="link auth-form__link">{linkText}</Link>
         </div>       
       </div>
     </div>

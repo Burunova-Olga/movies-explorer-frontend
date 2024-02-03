@@ -6,7 +6,7 @@ function More({ onClick })
 {
   return (
     <form onSubmit={onClick} className='section more'> 
-      <input type="submit" className="more__button" value={"Ещё"}/>
+      <input type="submit" className="button more__button" value={"Ещё"}/>
     </form>
   );
 }

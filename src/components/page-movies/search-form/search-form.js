@@ -26,7 +26,7 @@ function SearchForm(onSubmit)
         <input type="text" className="search__request" name="request" id="input-request" 
           placeholder="Фильм" value={formValues.request} onChange={handleChange} required />
 
-        <input type="submit" className="search__submit" style={{ backgroundImage: `url(${find})` }}/>
+        <input type="submit" className="button search__submit" style={{ backgroundImage: `url(${find})` }}/>
         
         <Checkbutton/>
       </form>

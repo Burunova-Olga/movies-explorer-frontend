@@ -1,0 +1,25 @@
+.header
+{
+  height: 74px;
+  background-color: rgb(32, 32, 32);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+/*********************************************/
+
+.header__logo
+{
+  height: 38px;
+  width: 38px;
+
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center; 
+
+  margin: 0;
+  padding: 0;
+}

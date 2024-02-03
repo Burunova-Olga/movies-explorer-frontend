@@ -1,7 +1,5 @@
 .footer
 {
-  margin: 0;
-  padding: 0 70px;
   height: 172px;
 
   font-size: 13px;
@@ -9,19 +7,10 @@
   line-height: 15.73px;
 }
 
-@media screen and (max-width: 768px)
-{
-  .footer
-  {
-    padding: 0 50px;
-  }
-}
-
 @media screen and (max-width: 320px)
 {
   .footer
   {
-    padding: 0 18px;
     height: 253px;
     font-size: 12px;
     line-height: 14.52px;
