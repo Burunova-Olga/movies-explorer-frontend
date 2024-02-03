@@ -30,6 +30,7 @@
 @import url(./components/page-movies/movies-card-list/movies-card-list.css);
 @import url(./components/page-movies/search-form/search-form.css);
 @import url(./components/page-movies/preloader/preloader.css);
+@import url(./components/page-movies/more/more.css);
 
 /* profile */
 @import url(./components/profile/profile.css);

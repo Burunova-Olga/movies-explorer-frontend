@@ -1,10 +1,12 @@
 // компонент страницы с поиском по фильмам
 
-import { useEffect, React } from 'react';
+import { useEffect, useState, React } from 'react';
 
 import SearchForm from '../search-form/search-form';
 import MoviesCardList from '../movies-card-list/movies-card-list';
+import Footer from '../../footer/footer';
 import {cards} from '../../../utils/constants';
+import More from '../more/more';
 
 function Movies()
 {
@@ -14,12 +16,23 @@ function Movies()
     return () => document.body.style.backgroundColor = origFontStyle;
   }, []);
 
+  const [more, setMore] = useState(<More onClick={moreClick} />);
+  const [showingCards, setShowingCards] = useState(cards.slice(0, 12));
+
+  function moreClick()
+  {
+    setMore(<></>);
+    setShowingCards(cards);
+  }
+
   return (
     <main>
       <SearchForm />
       <MoviesCardList 
-        cards={cards}
+        cards={showingCards}
       />
+      {more}
+      <Footer />
     </main>
   );
 }
