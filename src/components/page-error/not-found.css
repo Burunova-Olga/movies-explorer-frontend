@@ -1,0 +1,42 @@
+.page-error
+{
+  height: 700px;
+
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+
+.page-error__text
+{
+  padding: 0;
+  margin: auto;
+
+  height: 100%;
+
+  font-weight: 400;
+  font-size: 16px;
+  
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.page-error__code
+{
+  padding: 0;
+  margin: 0 0 0 5px;
+
+  font-weight: 400;
+  font-size: 140px;
+}
+
+.page-error__link
+{
+  border: none;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: rgb(32, 32, 32);
+  color: rgb(42, 85, 244);
+}

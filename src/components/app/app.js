@@ -7,6 +7,7 @@ import SavedMovies from '../page-movies/saved-movies/saved-movies';
 import Profile from '../profile/profile';
 import Register from '../page-auth/register/register';
 import Login from '../page-auth/login/login';
+import NotFound from '../page-error/not-found';
 
 function App()
 {
@@ -26,6 +27,8 @@ function App()
       <Route path="/profile" element={<Profile/>} />
       <Route path="/signup" element={<Register onSubmit={signCreate} />} />
       <Route path="/signin" element={<Login onSubmit={signIn} />} />
+    
+      <Route path="*" element={<NotFound />} />    
     </Routes>
   );
 }

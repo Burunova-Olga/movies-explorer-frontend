@@ -32,5 +32,8 @@
 @import url(./components/page-movies/preloader/preloader.css);
 @import url(./components/page-movies/more/more.css);
 
+/* page-error */
+@import url(./components/page-error/not-found.css);
+
 /* profile */
 @import url(./components/profile/profile.css);
