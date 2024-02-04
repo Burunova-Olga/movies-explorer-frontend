@@ -9,12 +9,6 @@ import Header from '../../header/header';
 
 function SavedMovies()
 {
-  useEffect(() => {
-    const origBodyStyle = document.body.style.backgroundColor;
-    document.body.style.backgroundColor = "rgb(32, 32, 32)";
-    return () => document.body.style.backgroundColor = origBodyStyle;
-  }, []);
-  
   return (
     <main>
       <Header />

@@ -13,12 +13,6 @@ import Header from '../../header/header';
 function Main()
 {
   useEffect(() => {
-    const origBodyStyle = document.body.style.backgroundColor;
-    document.body.style.backgroundColor = "rgb(32, 32, 32)";
-    return () => document.body.style.backgroundColor = origBodyStyle;
-  }, []);
-  
-  useEffect(() => {
     const header = document.querySelector('.header');
     const origHeaderStyle = header.style.backgroundColor;
     header.style.backgroundColor = "rgb(7, 48, 66)";

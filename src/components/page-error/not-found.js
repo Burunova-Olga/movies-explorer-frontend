@@ -8,12 +8,6 @@ function NotFound()
   console.log("1");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const origBodyStyle = document.body.style.backgroundColor;
-    document.body.style.backgroundColor = "rgb(32, 32, 32)";
-    return () => document.body.style.backgroundColor = origBodyStyle;
-  }, []);
-  
   return (
     <main className='page-error'>
       <h1 className='page-error__text'>

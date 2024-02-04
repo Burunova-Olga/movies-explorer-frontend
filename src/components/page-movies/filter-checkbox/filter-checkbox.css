@@ -8,6 +8,8 @@
   align-items: center;
 }
 
+/*********************************************/
+
 .checkbutton__input
 {  
   width: 1px;
@@ -21,6 +23,8 @@
   border: 0;
 }
 
+/*********************************************/
+
 .checkbutton__label-text
 {  
   padding: 0;
@@ -30,6 +34,8 @@
   font-size: 14px;
   line-height: 18px;
 }
+
+/*********************************************/
 
 .checkbutton__pseudo
 {

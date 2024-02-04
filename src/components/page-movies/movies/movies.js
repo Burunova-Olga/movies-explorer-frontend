@@ -1,6 +1,6 @@
 // компонент страницы с поиском по фильмам
 
-import { useEffect, useState, React } from 'react';
+import { useState, React } from 'react';
 
 import SearchForm from '../search-form/search-form';
 import MoviesCardList from '../movies-card-list/movies-card-list';
@@ -11,14 +11,8 @@ import Header from '../../header/header';
 
 function Movies()
 {
-  useEffect(() => {
-    const origBodyStyle = document.body.style.backgroundColor;
-    document.body.style.backgroundColor = "rgb(32, 32, 32)";
-    return () => document.body.style.backgroundColor = origBodyStyle;
-  }, []);
-
   const [more, setMore] = useState(<More onClick={moreClick} />);
-  const [showingCards, setShowingCards] = useState(cards.slice(0, 12));
+  const [showingCards, setShowingCards] = useState(cards.slice(0, 5));
 
   function moreClick()
   {

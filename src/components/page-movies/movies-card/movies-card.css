@@ -15,14 +15,34 @@
   justify-self: center;
 }
 
-.card__trailer
+@media screen and (max-width: 950px)
+{
+  .card
+  {
+    width: 339px;
+    height: 262px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .card
+  {
+    width: 300px;
+    height: 237px;
+  }
+}
+
+/*********************************************/
+
+.card__trailer-link
 {  
   margin: 0;
   padding: 0;
   border: 0;
-
-  min-height: 281px;
 }
+
+/*********************************************/
 
 .card__preview
 {
@@ -37,13 +57,32 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px)
+{
+  .card__preview
+  {
+    width: 339px;
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .card__preview
+  {
+    width: 300px;
+    height: 168px;
+  }
+}
+
+/*********************************************/
 .card__button
 {
   margin: 0;
   padding: 0;
 
   width: 100%;
-  height: 78px;
+  height: 100%;
 
   background-color: rgb(34, 34, 34);
   color: rgb(255, 255, 255);
@@ -55,6 +94,23 @@
   text-align: left;
 }
 
+@media screen and (max-width: 768px)
+{
+  .card__button
+  {
+    grid-template-columns: 1fr 44px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .card__button
+  {
+    grid-template-columns: 1fr 40px;
+  }
+}
+
+/*********************************************/
 .card__name
 {
   text-overflow: ellipsis;
@@ -68,6 +124,15 @@
   font-size: 13px;
 }
 
+@media screen and (max-width: 768px)
+{
+  .card__name
+  {
+    padding: 14px 0 0 14px;
+  }
+}
+
+/*********************************************/
 .card__duration
 {  
   margin: 0;
@@ -78,13 +143,24 @@
   font-size: 11px;
 }
 
+@media screen and (max-width: 768px)
+{
+  .card__duration
+  {
+    padding: 0 0 14px 14px;
+  }
+}
+
+/*********************************************/
+
 .card__pic
 { 
-  margin: 0;
-  padding: 9px 16px 0 0;
+  margin: 9px 16px 0 0;
+  padding: 0;
 
-  width: 100%;
-  height: 100%;
+  width: 30px;
+  height: 30px;
+  grid-row: span 2;
 
   background-size: 14px 12px;
   background-color: rgb(34, 34, 34);
@@ -106,4 +182,20 @@
 { 
   background-size: 12px 12px;
   background-image: url(../../../images/delete.svg);
+}
+
+@media screen and (max-width: 768px)
+{
+  .card__pic
+  {
+    margin: 8px 14px 0 0;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .card__pic
+  {
+    margin: 7px 10px 0 0;
+  }
 }

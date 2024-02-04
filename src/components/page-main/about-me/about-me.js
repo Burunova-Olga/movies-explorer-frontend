@@ -7,7 +7,7 @@ import Portfolio from '../portfolio/portfolio';
 function AboutMe()
 {
   return (
-    <section id="about-me" className="section about-me">
+    <section id="about-me" className="section__main about-me">
       <h2 className="section__header about-me__header">Студент</h2>
       
       <div className='about-me__columns'>

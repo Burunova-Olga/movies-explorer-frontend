@@ -5,7 +5,7 @@ import React from 'react';
 function AboutProject()
 {
   return (
-    <section id="about-project" className="section about-project">
+    <section id="about-project" className="section__main about-project">
       <h2 className="section__header about-project__header">О проекте</h2>
       
       <article className="two-columns">

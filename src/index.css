@@ -4,12 +4,15 @@
 @import url(./components/app/app.css);
 
 /* page */
-@import url(./components/header/header.css);
-@import url(./components/navigation/navigation.css);
 @import url(./components/footer/footer.css);
 @import url(./components/errors/errors.css);
 @import url(./components/page/page.css);
 @import url(./components/section/section.css);
+
+/* header */
+@import url(./components/header/header.css);
+@import url(./components/header/navigation/navigation.css);
+@import url(./components/header/navigation_autorize/navigation_autorize.css);
 
 /* page-main */
 @import url(./components/page-main/about-me/about-me.css);
@@ -23,8 +26,6 @@
 @import url(./components/page-auth/auth-form/auth-form.css);
 
 /* page-movies */
-@import url(./components/page-movies/saved-movies/saved-movies.css);
-
 @import url(./components/page-movies/filter-checkbox/filter-checkbox.css);
 @import url(./components/page-movies/movies-card/movies-card.css);
 @import url(./components/page-movies/movies-card-list/movies-card-list.css);
@@ -36,4 +37,4 @@
 @import url(./components/page-error/not-found.css);
 
 /* profile */
-@import url(./components/profile/profile.css);
+@import url(./components/page-profile/page-profile.css);

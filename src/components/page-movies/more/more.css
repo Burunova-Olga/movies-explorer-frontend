@@ -6,6 +6,8 @@
   justify-content: center;
 }
 
+/*********************************************/
+
 .more__button
 {  
   margin: 50px 0 auto;
@@ -20,4 +22,20 @@
 
   background-color: rgb(47, 47, 47);
   color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 768px)
+{    
+  .more__button
+  {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{    
+  .more__button
+  {
+    margin-top: 50px;
+  }
 }

@@ -7,6 +7,25 @@
   text-align: end;
 }
 
+@media screen and (max-width: 768px)
+{    
+  .page-error
+  {
+    height: 1024px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{    
+  .page-error
+  {
+    height: 780px;
+    position: relative;
+  }
+}
+
+/*********************************************/
+
 .page-error__text
 {
   padding: 0;
@@ -23,6 +42,16 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 320px)
+{    
+  .page-error__text
+  {
+    font-size: 12px;
+  }
+}
+
+/*********************************************/
+
 .page-error__code
 {
   padding: 0;
@@ -32,6 +61,17 @@
   font-size: 140px;
 }
 
+@media screen and (max-width: 320px)
+{    
+  .page-error__code
+  {
+    font-size: 80px;
+    margin-bottom: 10px;
+  }
+}
+
+/*********************************************/
+
 .page-error__link
 {
   border: none;
@@ -39,4 +79,17 @@
   font-size: 14px;
   background-color: rgb(32, 32, 32);
   color: rgb(42, 85, 244);
+}
+
+@media screen and (max-width: 320px)
+{    
+  .page-error__link
+  {
+    font-size: 12px;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
 }
