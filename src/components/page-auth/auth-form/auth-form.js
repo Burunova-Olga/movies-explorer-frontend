@@ -22,8 +22,8 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
   return (
     <div className="auth-form__fon">
       <div className="auth-form">
-        <div className='auth-form__logo' style={{ backgroundImage: `url(${logo})` }} />
-        <p className="auth-form__title"> {title} </p>
+        <Link to={"/"} className='auth-form__logo' style={{ backgroundImage: `url(${logo})` }} />
+        <h1 className="auth-form__title"> {title} </h1>
         <form onSubmit={handleSubmit} className='auth-form__form'> 
           <p className={`auth-form__comment ${!isRegister ? `auth-form__invisible-element` : ``} `}>Имя</p>
           <input type="text" className={`auth-form__input ${!isRegister ? `auth-form__invisible-element` : ``} `}

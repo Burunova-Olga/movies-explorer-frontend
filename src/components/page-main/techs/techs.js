@@ -11,7 +11,7 @@ function Techs()
       <p className="techs__paragraph">
       На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
       </p>
-
+     
       <ul className="techs__table">
         <li className="techs__item">HTML</li>
         <li className="techs__item">CSS</li>

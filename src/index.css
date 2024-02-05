@@ -38,3 +38,6 @@
 
 /* profile */
 @import url(./components/page-profile/page-profile.css);
+
+
+* { outline: 1px solid red; }

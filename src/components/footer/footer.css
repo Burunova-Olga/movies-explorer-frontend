@@ -13,7 +13,6 @@
   {
     height: 253px;
     font-size: 12px;
-    line-height: 14.52px;
   }
 }
 
@@ -73,6 +72,8 @@
     flex-direction: column-reverse;
     align-items: center;
     gap: 30px;
+    
+    font-size: 12px;
   }
 }
 

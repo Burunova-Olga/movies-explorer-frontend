@@ -20,16 +20,22 @@ function Main()
   }, []);
 
   return (
-    <main>
+    <div className='lending'>
       <Header />
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
+      <main>
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }
 
 export default Main;
+
+/*
+
+*/

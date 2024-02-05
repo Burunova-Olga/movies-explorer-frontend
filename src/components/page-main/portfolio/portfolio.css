@@ -1,6 +1,6 @@
 .portfolio
 {
-  margin: 100px 0 0;
+  margin: 101px 0 0;
   padding: 0;
   
   font-weight: 400;
@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 350px)
 {
   .portfolio
   {
@@ -36,7 +36,7 @@
   list-style-type: none;
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 350px)
 {
   .portfolio__projects
   {
@@ -50,8 +50,6 @@
 {
   margin: 20px 0 0;
   padding: 0 0 19px;
-  
-  border-bottom: 1px solid rgb(66, 66, 66);
 
   display: flex;
   flex-direction: row;
@@ -60,13 +58,9 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 50px;
+  letter-spacing: -0.04em;
   text-decoration: none;
   color: rgb(255, 255, 255);
-}
-
-.project__link:last-of-type
-{
-  border: none;
 }
 
 @media screen and (max-width: 768px)
@@ -74,16 +68,25 @@
   .project__link
   {
     font-size: 28px;
+    margin-top: 18px;
   }
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 350px)
 {
   .project__link
   {
+    margin-top: 20px;
     font-size: 18px;
     line-height: 28px;
   }
+}
+
+/*********************************************/
+
+.project__link_underline
+{
+  border-bottom: 1px solid rgb(66, 66, 66);
 }
 
 /*********************************************/
@@ -92,4 +95,14 @@
 {
   margin: 0;
   padding: 0;  
+}
+
+/*********************************************/
+
+.project__arrow
+{
+  margin: 0;
+  padding: 0;  
+  
+  line-height: 60px;
 }

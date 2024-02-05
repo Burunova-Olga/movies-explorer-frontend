@@ -1,6 +1,7 @@
 // компонент, который отрисовывает шапку сайта на страницу
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo_mini from '../../images/logo-mini.svg';
 import NavigationAutorize from './navigation_autorize/navigation_autorize';
 import Navigation from './navigation/navigation';
@@ -16,10 +17,10 @@ function Header()
   }
 
   return (
-    <section className="section header">
-      <div className='header__logo' style={{ backgroundImage: `url(${logo_mini})` }}></div>
+    <header className="section header">
+      <Link to={"/"}  className='header__logo' style={{ backgroundImage: `url(${logo_mini})` }} />
       <TypeHeader isAutorize={true} />
-    </section>
+    </header>
   );
 }
 

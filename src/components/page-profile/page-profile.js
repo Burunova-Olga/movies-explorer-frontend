@@ -1,6 +1,7 @@
 // компонент страницы изменения профиля
 
 import Header from '../header/header';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import useForm from "../../hooks/UseForm";
 
@@ -35,19 +36,19 @@ function Profile({ user, signOut, onSubmit })
             <p>Имя</p>
             <input type="text" className='profile-form__input'
               name="name" id="input-name" value={formValues.name} onChange={handleChange} required />              
-            <span class="input-error"></span>
+            <span className="input-error"></span>
           </fieldset>
           <fieldset className='profile-form__line'>
             <p>E-mail</p>
             <input type="email" className="profile-form__input" name="email" id="input-email"
               value={formValues.email} onChange={handleChange} required />              
-              <span class="input-error"></span>
+              <span className="input-error"></span>
           </fieldset>              
-          <span class="submit-error"></span>
+          <span className="submit-error"></span>
           <input type="submit" className="button profile-form__submit profile__button-invisible" value="Сохранить" />
         </form>
         <button onClick={onChange} className="link profile__change ">Редактировать</button>
-        <button onClick={signOut} className="link profile__logout ">Выйти из аккаунта</button>
+        <Link to={"/"} onClick={signOut} className="link profile__logout ">Выйти из аккаунта</Link>
       </div>
     </main>
   );

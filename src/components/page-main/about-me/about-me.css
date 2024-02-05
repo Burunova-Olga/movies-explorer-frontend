@@ -1,13 +1,14 @@
 .about-me
 {
-  height: 1079px;
+  min-height: 1079px;
+  max-height: min-content;
 }
 
 @media screen and (max-width: 768px)
 {
   .about-me
   {
-    height: 994px;
+    min-height: 994px;
   }
 }
 
@@ -15,7 +16,8 @@
 {
   .about-me
   {
-    height: 1198px;
+    min-height: 1198px;  
+    padding: 0 14px;
   }
 }
 
@@ -58,16 +60,17 @@
 {  
   .about-me__columns
   {
+    padding-top: 70px;
     height: 307px;
   }
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 600px)
 {
   .about-me__columns
   {
     height: min-content;
-    padding-top: 60px;
+    padding-top: 62px;
     flex-direction: column-reverse;
   }
 }
@@ -80,7 +83,6 @@
   padding: 0;
   height: 100%;
 
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -97,6 +99,7 @@
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
+  letter-spacing: -0.04em;
 }
 
 @media screen and (max-width: 768px)
@@ -108,13 +111,20 @@
   }
 }
 
+@media screen and (max-width: 600px)
+{
+  .about-me__title
+  {
+    margin-top: 40px;
+  }
+}
+
 @media screen and (max-width: 320px)
 {
   .about-me__title
   {
     font-size: 30px;
     line-height: 36.31px;
-    margin-top: 40px;
   }
 }
 
@@ -122,7 +132,7 @@
 
 .about-me__subtitle
 {
-  margin: 18px 0 0;
+  margin: 22px 0 0;
   padding: 0;
 
   font-weight: 500;
@@ -134,7 +144,7 @@
 {  
   .about-me__subtitle
   {
-    margin-top: 16px;
+    margin-top: 15px;
     font-size: 12px;
     line-height: 18px;
   }
@@ -154,7 +164,7 @@
 
 .about-me__paragraph
 {
-  margin: 26px 0 0;
+  margin: 26px 50px 0 0;
   padding: 0;
   max-width: 600px;
 
@@ -174,7 +184,7 @@
   }
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 600px)
 {
   .about-me__paragraph
   {
@@ -188,25 +198,22 @@
 
 .about-me__link
 {
-  margin: 0;
+  margin: auto 0 0;
   padding: 0;
-
-  position: absolute;
-  bottom: 0;
 
   font-weight: 500;
   font-size: 14px;
-  line-height: 16,94px;
   color:rgb(255, 255, 255);
-  text-decoration:none;
+  text-decoration: none;
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 768px)
 {
   .about-me__link
   {
-  position: relative;
-    margin-top: 40px;
+    /* для совпадения с макетом на pixel perfect */
+    /* margin-top: 72px; */
+    margin-top: 40px; 
   }
 }
 
@@ -219,6 +226,7 @@
   width: 270px;
   height: 100%;
   border-radius: 10px;
+  flex-shrink: 0;
 
   background-size: cover;
   background-position: center;  
@@ -233,10 +241,20 @@
   }
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 600px)
 {
   .about-me__photo
   {
+    margin: 0 auto;
+    height: 352px;
+  }
+}
+
+@media screen and (max-width: 400px)
+{
+  .about-me__photo
+  {
+    margin: 0;
     width: 100%;
     height: 352px;
   }

@@ -1,13 +1,14 @@
 .about-project
 {
-  height: 608px;
+  min-height: 608px;
+  max-height: min-content;
 }
 
 @media screen and (max-width: 768px)
 {
   .about-project
   {
-    height: 585px;
+    min-height: 585px;
   }
 }
 
@@ -15,7 +16,7 @@
 {
   .about-project
   {
-    height: 641px;
+    min-height: 641px;
   }
 }
 
@@ -38,7 +39,7 @@
 {
   .about-project__header
   {
-    padding-top: 70px;
+    padding-top: 71px;
   }
 }
 
@@ -46,11 +47,11 @@
 
 .two-columns
 {
-  margin: 70px 0 0;
+  margin: 72px 0 0;
   padding: 0;
 
   display: flex;
-  gap: 40px;
+  gap: 51px;
   justify-content: space-between;
 }
 
@@ -58,11 +59,11 @@
 {  
   .two-columns
   {
-    gap: 30px;
+    gap: 36px;
   }
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 400px)
 {
   .two-columns
   {
@@ -88,12 +89,12 @@
   margin: 0;
   padding: 0;
 
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 24.2px;
+  letter-spacing: -0.04em;
 }
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 768px)
 {
   .two-columns__header
   {  
@@ -119,6 +120,7 @@
   .two-columns__paragraph
   {
     margin-top: 22px;
+    font-size: 12px;
     line-height: 18px;
   }
 }
@@ -138,7 +140,7 @@
 
 .diagram
 {
-  margin: 110px 0 0;
+  margin: 112px 0 0;
   padding: 0;
 
   display:  grid;
@@ -151,7 +153,7 @@
 {  
   .diagram
   {
-    margin-top: 93px;
+    margin-top: 94px;
     grid-template-columns: 140px 1fr;
   }
 }
@@ -160,7 +162,7 @@
 {
   .diagram
   {
-    margin-top: 60px;
+    margin-top: 61px;
     grid-template-columns: 100px 1fr;
     grid-template-rows: 35px max-content;
     row-gap: 10px;

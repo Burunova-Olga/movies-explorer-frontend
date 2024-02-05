@@ -14,7 +14,7 @@ function MoviesCard({ card })
         <div style={{ backgroundImage: `url(${card.image.previewUrl})` }} className="card__preview" />
       </a>      
       <button className="button card__button" type="button" /*onClick={handleLike}*/>
-        <h3 className='card__name'>{card.nameRU}</h3>
+        <h2 className='card__name'>{card.nameRU}</h2>
         <div className={`card__pic ${currentPath == "/movies" ? `card__save` : `card__delete`}`}></div>
         <p className='card__duration'>{hours}ч {minutes}мин</p>
       </button>
