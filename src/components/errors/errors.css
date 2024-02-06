@@ -14,6 +14,11 @@
   display: none;
 }
 
+.submit-error_visible
+{
+  display: visible;
+}
+
 .input-error
 {
   margin: 10px 0 0;
@@ -30,7 +35,7 @@
   display: none;
 }
 
-.error_visible
+.input-error_visible
 {
   display: visible;
 }

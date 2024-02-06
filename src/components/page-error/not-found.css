@@ -1,37 +1,34 @@
-.page-error
+.not-found
 {
   min-height: 700px;
 
   display: flex;
   flex-direction: column;
-  text-align: end;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 768px)
 {    
-  .page-error
+  .not-found
   {
-    min-height: 1024px;
+    min-height: 862px;
   }
 }
 
 @media screen and (max-width: 320px)
 {    
-  .page-error
+  .not-found
   {
-    min-height: 780px;
-    position: relative;
+    min-height: 750px;
   }
 }
 
 /*********************************************/
 
-.page-error__text
+.not-found__text
 {
+  margin: 246px auto 0;
   padding: 0;
-  margin: auto;
-
-  height: 100%;
 
   font-weight: 400;
   font-size: 16px;
@@ -39,23 +36,32 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  justify-content: center;
+  justify-content: start;
+}
+
+@media screen and (max-width: 768px)
+{    
+  .not-found__text
+  {
+    margin-top: 410px;
+  }
 }
 
 @media screen and (max-width: 320px)
 {    
-  .page-error__text
+  .not-found__text
   {
+    margin-top: 330px;
     font-size: 12px;
   }
 }
 
 /*********************************************/
 
-.page-error__code
+.not-found__code
 {
   padding: 0;
-  margin: 0 0 0 5px;
+  margin: 0 0 12px 0;
 
   font-weight: 400;
   font-size: 140px;
@@ -63,17 +69,19 @@
 
 @media screen and (max-width: 320px)
 {    
-  .page-error__code
+  .not-found__code
   {
     font-size: 80px;
-    margin-bottom: 10px;
   }
 }
 
 /*********************************************/
 
-.page-error__link
+.not-found__link
 {
+  margin: 0 auto 60px;
+  padding: 0;
+
   border: none;
   font-weight: 400;
   font-size: 14px;
@@ -83,13 +91,9 @@
 
 @media screen and (max-width: 320px)
 {    
-  .page-error__link
+  .not-found__link
   {
     font-size: 12px;
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    right: 0;
     margin: 0 auto;
   }
 }

@@ -35,6 +35,14 @@
   line-height: 18px;
 }
 
+@media screen and (max-width: 1270px)
+{
+  .checkbutton__label-text
+  {
+    font-size: 11px;
+  }
+}
+
 /*********************************************/
 
 .checkbutton__pseudo

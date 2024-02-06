@@ -65,6 +65,7 @@
   .auth-form__title
   {
     margin: 50px auto 80px;
+    text-align: center;
   }
 }
 
