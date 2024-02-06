@@ -1,6 +1,6 @@
 .page-error
 {
-  height: 700px;
+  min-height: 700px;
 
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 {    
   .page-error
   {
-    height: 1024px;
+    min-height: 1024px;
   }
 }
 
@@ -19,7 +19,7 @@
 {    
   .page-error
   {
-    height: 780px;
+    min-height: 780px;
     position: relative;
   }
 }

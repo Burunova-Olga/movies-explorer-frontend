@@ -20,26 +20,33 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
   }
 
   return (
-    <div className="auth-form__fon">
-      <div className="auth-form">
+    <main className="auth-form">
         <Link to={"/"} className='auth-form__logo' style={{ backgroundImage: `url(${logo})` }} />
+        
         <h1 className="auth-form__title"> {title} </h1>
+        
         <form onSubmit={handleSubmit} className='auth-form__form'> 
-          <p className={`auth-form__comment ${!isRegister ? `auth-form__invisible-element` : ``} `}>Имя</p>
-          <input type="text" className={`auth-form__input ${!isRegister ? `auth-form__invisible-element` : ``} `}
-            name="name" id="input-name" value={formValues.name} onChange={handleChange} required />
-          <span class="input-error"></span>
+          <fieldset className='auth-form__line'>
+            <p className={`auth-form__comment ${!isRegister ? `auth-form__invisible-element` : ``} `}>Имя</p>
+            <input type="text" className={`auth-form__input ${!isRegister ? `auth-form__invisible-element` : ``} `}
+              name="name" id="input-name" value={formValues.name} onChange={handleChange} required />
+            <span class="input-error"></span>
+          </fieldset>
 
-          <p className='auth-form__comment'>E-mail</p>
-          <input type="email" className="auth-form__input" name="email" id="input-email"
-            value={formValues.email} onChange={handleChange} required />
-          <span class="input-error"></span>
+          <fieldset className='auth-form__line'>          
+            <p className='auth-form__comment'>E-mail</p>
+            <input type="email" className="auth-form__input" name="email" id="input-email"
+              value={formValues.email} onChange={handleChange} required />
+            <span class="input-error"></span>
+          </fieldset>
 
-          <p className='auth-form__comment'>Пароль</p>
-          <input type="password" className="auth-form__input" name="password" id="input-password"
-            value={formValues.password} onChange={handleChange} required />
-          <span class="input-error"></span>
-
+          <fieldset className='auth-form__line'>
+            <p className='auth-form__comment'>Пароль</p>
+            <input type="password" className="auth-form__input" name="password" id="input-password"
+              value={formValues.password} onChange={handleChange} required />
+            <span class="input-error"></span>
+          </fieldset>
+          
           <span class="submit-error"></span>
           <input type="submit" className="button auth-form__submit" value={submmitText} />
         </form>
@@ -48,8 +55,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
           <p>{questionText}</p>
           <Link to={link} className="link auth-form__link">{linkText}</Link>
         </div>       
-      </div>
-    </div>
+    </main>
   );
 }
 

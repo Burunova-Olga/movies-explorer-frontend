@@ -49,7 +49,7 @@
 .about-me__columns
 {
   padding: 66px 0 0;
-  height: 327px;
+  min-height: 327px;
 
   display: flex;
   flex-direction: row;
@@ -61,7 +61,7 @@
   .about-me__columns
   {
     padding-top: 70px;
-    height: 307px;
+    min-height: 307px;
   }
 }
 
@@ -224,7 +224,7 @@
   margin: 0;
   padding: 0;
   width: 270px;
-  height: 100%;
+  height: 307px;
   border-radius: 10px;
   flex-shrink: 0;
 

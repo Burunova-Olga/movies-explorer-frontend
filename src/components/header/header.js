@@ -3,8 +3,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo_mini from '../../images/logo-mini.svg';
-import NavigationAutorize from './navigation_autorize/navigation_autorize';
-import Navigation from './navigation/navigation';
+import NavigationAutorize from './nav-auth/nav-auth';
+import Navigation from './nav-empty/nav-empty';
 
 function Header()
 {

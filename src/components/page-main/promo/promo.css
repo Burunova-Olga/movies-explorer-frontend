@@ -2,7 +2,7 @@
 {
   margin: 0;
   padding: 0;
-  height: 524px;
+  min-height: 524px;
 
   background-color: rgb(7, 48, 66);
 
@@ -15,7 +15,7 @@
 {
   .promo
   {
-    height: 784px;
+    min-height: 784px;
   }
 }
 
@@ -23,7 +23,7 @@
 {
   .promo
   {
-    height: 570px;
+    min-height: 570px;
   }
 }
 
@@ -85,6 +85,14 @@
   .promo__header
   {      
     margin-top: 326px;
+  }
+}
+
+@media screen and (max-width: 500px)
+{
+  .promo__header
+  {      
+    margin: auto;
   }
 }
 

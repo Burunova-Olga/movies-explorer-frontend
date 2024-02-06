@@ -7,8 +7,8 @@ import Portfolio from '../portfolio/portfolio';
 function AboutMe()
 {
   return (
-    <section id="about-me" className="section__main about-me">
-      <h2 className="section__header about-me__header">Студент</h2>
+    <section id="about-me" className="lending__section about-me">
+      <h2 className="lending__header about-me__header">Студент</h2>
       
       <div className='about-me__columns'>
         <article className='about-me__info'>
@@ -20,7 +20,8 @@ function AboutMe()
           </p>
           <a target="_blank" href="https://github.com/Burunova-Olga" className='link about-me__link'>Github</a>
         </article>
-        <div style={{ backgroundImage: `url(${photo})` }} className="about-me__photo" />
+        
+        <img src={photo} class="about-me__photo" alt='Это я'/>
       </div>
       
       <Portfolio />

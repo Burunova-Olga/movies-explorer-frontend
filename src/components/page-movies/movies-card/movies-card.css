@@ -4,7 +4,7 @@
   padding: 0;
 
   width: 364px;
-  height: 281px;
+  min-height: 281px;
   border-radius: 6px;
 
   background-color: rgb(34, 34, 34);
@@ -20,7 +20,7 @@
   .card
   {
     width: 339px;
-    height: 262px;
+    min-height: 262px;
   }
 }
 
@@ -29,7 +29,7 @@
   .card
   {
     width: 300px;
-    height: 237px;
+    min-height: 237px;
   }
 }
 

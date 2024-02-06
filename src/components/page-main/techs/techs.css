@@ -145,6 +145,15 @@
   }
 }
 
+@media screen and (max-width: 500px)
+{  
+  .techs__table
+  {
+    padding-bottom: 70px;
+  }
+}
+
+
 @media screen and (max-width: 320px)
 {
   .techs__table

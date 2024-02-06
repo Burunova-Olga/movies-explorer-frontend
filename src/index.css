@@ -11,10 +11,11 @@
 
 /* header */
 @import url(./components/header/header.css);
-@import url(./components/header/navigation/navigation.css);
-@import url(./components/header/navigation_autorize/navigation_autorize.css);
+@import url(./components/header/nav-auth/nav-auth.css);
+@import url(./components/header/nav-empty/nav-empty.css);
 
 /* page-main */
+@import url(./components/page-main/main/main.css);
 @import url(./components/page-main/about-me/about-me.css);
 @import url(./components/page-main/about-project/about-project.css);
 @import url(./components/page-main/nav-tab/nav-tab.css);
@@ -40,4 +41,6 @@
 @import url(./components/page-profile/page-profile.css);
 
 
+/*
 * { outline: 1px solid red; }
+*/

@@ -1,6 +1,6 @@
 .footer
 {
-  height: 172px;
+  min-height: 172px;
 
   font-size: 13px;
   font-weight: 400;
@@ -11,14 +11,14 @@
 {
   .footer
   {
-    height: 253px;
+    min-height: 253px;
     font-size: 12px;
   }
 }
 
 /*********************************************/
 
-.footer_header
+.footer__header
 {
   margin: 0;
   padding: 79px 0 20px;
@@ -35,7 +35,7 @@
 
 @media screen and (max-width: 320px)
 {
-  .footer_header
+  .footer__header
   {
     padding-bottom: 21px;
     font-size: 12px;
@@ -104,6 +104,8 @@
   flex-direction: row;
   justify-content: flex-end;
   gap: 20px;
+  
+  list-style-type: none;
 }
 
 @media screen and (max-width: 320px)

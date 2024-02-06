@@ -2,7 +2,7 @@
 {
   margin: 0;
   padding: 0;
-  height: 66px;
+  min-height: 66px;
 
   background-color: rgb(39, 39, 39);
 

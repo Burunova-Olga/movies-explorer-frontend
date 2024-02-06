@@ -14,7 +14,7 @@ function NotFound()
         <span className='page-error__code'>404</span>
         Страница не найдена
       </h1>      
-      <button className='link page-error__link' onClick={() => navigate(-1)}>Назад</button>
+      <button type="button" className='link page-error__link' onClick={() => navigate(-1)}>Назад</button>
     </main>
   );
 }

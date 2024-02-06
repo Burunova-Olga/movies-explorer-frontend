@@ -5,8 +5,8 @@ import React from 'react';
 function Techs()
 {
   return (
-    <section id="techs" className="section__main techs">
-      <h2 className="section__header techs__header">Технологии</h2>
+    <section id="techs" className="lending__section techs">
+      <h2 className="lending__header techs__header">Технологии</h2>
       <h3 className='techs__title'>7 технологий</h3>
       <p className="techs__paragraph">
       На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.

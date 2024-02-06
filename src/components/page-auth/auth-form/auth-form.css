@@ -1,26 +1,15 @@
-.auth-form__fon
-{ 
-  padding: 0;
-  margin: 0;
-  
-  display: flex;
-  justify-content: center;
-}
-
-/*********************************************/
-
 .auth-form
 { 
-  width: 396px;
-  height: min-content;
-  
-  display: flex;
-  flex-direction: column;
-
   padding: 70px 0;
   margin: 0;
-}
 
+  width: 396px;
+  /*
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 700px;*/
+}
 
 @media screen and (max-width: 768px)
 {
@@ -37,7 +26,7 @@
     padding: 56px 0 30px;
     width: 260px;
   }
-}
+}*/
 
 /*********************************************/
 
@@ -48,6 +37,7 @@
 
   width: 38px;
   height: 38px;
+  flex-shrink: 0;
 
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -66,7 +56,7 @@
 
 .auth-form__title
 {
-  margin: 40px 0 20px;
+  margin: 40px 0 0;
   padding: 0;
 
   font-weight: 500;
@@ -94,15 +84,20 @@
 
 .auth-form__form
 {
-  height: 400px;
-  position: relative;
+  margin: 40px auto 0;
+  padding: 0;
+  /*
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: start;*/
 }
 
 @media screen and (max-width: 768px)
 {
   .auth-form__form
   {
-    height: 400px;
+    min-height: 400px;
   }
 }
 
@@ -110,10 +105,35 @@
 {
   .auth-form__form
   {
-    height: 490px;
+    min-height: 490px;
   }
 }
 
+
+/*********************************************/
+
+.auth-form__line
+{
+  margin: 0;
+  padding: 17px 0 16px 0;
+
+  border: none;
+  border-bottom: 1px solid rgb(66, 66, 66); 
+}
+
+.auth-form__line:last-of-type
+{
+  border: none;
+  /*margin-bottom: 205px;*/
+}
+
+@media screen and (max-width: 480px)
+{    
+  .auth-form__line
+  {
+    grid-template-columns: 100px 1fr;  
+  }
+}
 
 /*********************************************/
 .auth-form__comment
@@ -141,7 +161,7 @@
   font-size: 13px;
   line-height: 15.73px;
 
-  height: 46px;
+  min-height: 46px;
   width: 100%;
 
   border: 0;
@@ -152,19 +172,14 @@
 
 .auth-form__submit
 {
-  margin: 0;
+  margin: auto 0 0;
   padding: 0;
-
-  position: absolute;
-  bottom: 0;
-  left:0;
-
+  
   font-weight: 500;
   font-size: 14px;
-  line-height: 16.94px;
 
   width: 100%;
-  height: 45px;
+  min-height: 45px;
 
   border-radius: 3px;
 
@@ -198,7 +213,6 @@
 
   font-weight: 400;
   font-size: 14px;
-  line-height: 16.94px;
 
   color: rgb(139, 139, 139);
 
