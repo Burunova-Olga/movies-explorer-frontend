@@ -26,29 +26,36 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
         <h1 className="auth-form__title"> {title} </h1>
         
         <form onSubmit={handleSubmit} className='auth-form__form'> 
-          <fieldset className='auth-form__line'>
-            <p className={`auth-form__comment ${!isRegister ? `auth-form__invisible-element` : ``} `}>Имя</p>
-            <input type="text" className={`auth-form__input ${!isRegister ? `auth-form__invisible-element` : ``} `}
-              name="name" id="input-name" value={formValues.name} onChange={handleChange} required />
-            <span class="input-error"></span>
-          </fieldset>
+          <div className='fields'>
+            <fieldset className='auth-form__line'>
+              <p className='auth-form__comment'>Имя</p>
+              <input type="text" className='auth-form__input' name="name" id="input-name" 
+                value={formValues.name} onChange={handleChange} placeholder="Введите имя" 
+                minlength="2" maxlength="40" required />
+              <span class="error input-error"></span>
+            </fieldset>
 
-          <fieldset className='auth-form__line'>          
-            <p className='auth-form__comment'>E-mail</p>
-            <input type="email" className="auth-form__input" name="email" id="input-email"
-              value={formValues.email} onChange={handleChange} required />
-            <span class="input-error"></span>
-          </fieldset>
+            <fieldset className='auth-form__line'>          
+              <p className='auth-form__comment'>E-mail</p>
+              <input type="email" className="auth-form__input" name="email" id="input-email"
+                value={formValues.email} onChange={handleChange} placeholder="Ввведите почту" 
+                minlength="2" maxlength="40" required />
+              <span class="error input-error"></span>
+            </fieldset>
 
-          <fieldset className='auth-form__line'>
-            <p className='auth-form__comment'>Пароль</p>
-            <input type="password" className="auth-form__input" name="password" id="input-password"
-              value={formValues.password} onChange={handleChange} required />
-            <span class="input-error"></span>
-          </fieldset>
+            <fieldset className={`auth-form__line ${!isRegister ? `auth-form__line-invisible` : ``} `}>
+              <p className='auth-form__comment'>Пароль</p>
+              <input type="password" className="auth-form__input" name="password" id="input-password"
+                value={formValues.password} onChange={handleChange} placeholder="Введите пароль" 
+                minlength="2" maxlength="20" required />
+              <span class="error input-error"></span>
+            </fieldset>
+          </div>
           
-          <span class="submit-error"></span>
-          <input type="submit" className="button auth-form__submit" value={submmitText} />
+          <div> 
+            <span class="error submit-error"></span>
+            <input type="submit" className="button auth-form__submit" value={submmitText} />
+          </div>
         </form>
 
         <div className="auth-form__question">
