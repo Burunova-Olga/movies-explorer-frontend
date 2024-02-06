@@ -12,14 +12,14 @@ function NavigationAutorize()
 
   function toggleClick()
   {
-    document.querySelector('.burger').classList.add('burger_opened');
-    document.querySelector('.cover').classList.add('cover_visible');
+    document.querySelector('.burger').classList.add('burger-opened');
+    document.querySelector('.cover').classList.add('cover-visible');
   }
   
   function closeClick()
   {
-    document.querySelector('.burger').classList.remove('burger_opened');
-    document.querySelector('.cover').classList.remove('cover_visible');
+    document.querySelector('.burger').classList.remove('burger-opened');
+    document.querySelector('.cover').classList.remove('cover-visible');
   }
 
   return (
@@ -30,18 +30,18 @@ function NavigationAutorize()
       <div className='burger'>
         <button type="button" onClick={closeClick} className="button burger__close" style={{ backgroundImage: `url(${close})` }} ></button>
       
-        <Link to={"/"} className={`link burger__link ${currentPath == "/" ? `burger__link_active` : ``}`}>Главная</Link>        
-        <Link to={"/movies"} className={`link burger__link ${currentPath == "/movies" ? `burger__link_active` : ``}`}>Фильмы</Link>
-        <Link to={"/saved-movies"} className={`link burger__link ${currentPath == "/saved-movies" ? `burger__link_active` : ``}`}>Сохранённые фильмы</Link>
-        <Link to={"/profile"} className={`link burger__link ${currentPath == "/profile" ? `burger__link_active` : ``}`}>Аккаунт
-          <span className='burger__foto' style={{ backgroundImage: `url(${avatar})` }}/>
+        <Link to={"/"} className={`link burger__link ${currentPath == "/" ? `link_active` : ``}`}>Главная</Link>        
+        <Link to={"/movies"} className={`link burger__link ${currentPath == "/movies" ? `link_active` : ``}`}>Фильмы</Link>
+        <Link to={"/saved-movies"} className={`link burger__link ${currentPath == "/saved-movies" ? `link_active` : ``}`}>Сохранённые фильмы</Link>
+        <Link to={"/profile"} className={`link burger__link ${currentPath == "/profile" ? `link_active` : ``}`}>Аккаунт
+          <span className='burger__avatar' style={{ backgroundImage: `url(${avatar})` }}/>
         </Link>
       </div>
 
       <nav className="simplenav"> 
-        <Link to={"/movies"} className={`link simplenav__link ${currentPath == "/movies" ? `simplenav__link_active` : ``}`}>Фильмы</Link>
-        <Link to={"/saved-movies"} className={`link simplenav__link ${currentPath == "/saved-movies" ? `simplenav__link_active` : ``}`}>Сохранённые фильмы</Link>
-        <Link to={"/profile"} className={`link simplenav__link ${currentPath == "/profile" ? `simplenav__link_active` : ``}`}>Аккаунт
+        <Link to={"/movies"} className={`link simplenav__link ${currentPath == "/movies" ? `link_active` : ``}`}>Фильмы</Link>
+        <Link to={"/saved-movies"} className={`link simplenav__link ${currentPath == "/saved-movies" ? `link_active` : ``}`}>Сохранённые фильмы</Link>
+        <Link to={"/profile"} className={`link simplenav__link ${currentPath == "/profile" ? `link_active` : ``}`}>Аккаунт
           <span className='simplenav__avatar' style={{ backgroundImage: `url(${avatar})` }}/>
         </Link>
       </nav>

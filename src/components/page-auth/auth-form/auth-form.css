@@ -229,7 +229,7 @@
 }
 
 /*********************************************/
-.auth-form__invisible-element
+.auth-form__line-invisible
 {
   opacity: 0;
   height: 0;

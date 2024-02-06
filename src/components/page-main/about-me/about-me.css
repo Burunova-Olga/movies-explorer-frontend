@@ -226,7 +226,7 @@
   width: 270px;
   height: 307px;
   border-radius: 10px;
-  flex-shrink: 0;
+ object-fit: cover;
 
   background-size: cover;
   background-position: center;  

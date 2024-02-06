@@ -27,7 +27,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
         
         <form onSubmit={handleSubmit} className='auth-form__form'> 
           <div className='fields'>
-            <fieldset className='auth-form__line'>
+            <fieldset className={`auth-form__line ${!isRegister ? `auth-form__line-invisible` : ``} `}>
               <p className='auth-form__comment'>Имя</p>
               <input type="text" className='auth-form__input' name="name" id="input-name" 
                 value={formValues.name} onChange={handleChange} placeholder="Введите имя" 
@@ -43,7 +43,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
               <span class="error input-error"></span>
             </fieldset>
 
-            <fieldset className={`auth-form__line ${!isRegister ? `auth-form__line-invisible` : ``} `}>
+            <fieldset className='auth-form__line'>   
               <p className='auth-form__comment'>Пароль</p>
               <input type="password" className="auth-form__input" name="password" id="input-password"
                 value={formValues.password} onChange={handleChange} placeholder="Введите пароль" 

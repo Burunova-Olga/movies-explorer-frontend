@@ -13,11 +13,11 @@ function MoviesCard({ card })
     <a target="_blank" href={card.trailerLink} className="card__link">
       <img src={card.image.previewUrl} class="card__preview" alt={card.nameRU}/>
     </a>      
-    <button type="button" className="button card__button" /*onClick={handleLike}*/>
+    <div className="button card__button" /*onClick={handleLike}*/>
       <h2 className='card__name'>{card.nameRU}</h2>
       <div className={`card__pic ${currentPath == "/movies" ? `card__save` : `card__delete`}`}></div>
       <p className='card__duration'>{hours}ч {minutes}мин</p>
-    </button>
+    </div>
   </div>
   );
 }

@@ -21,13 +21,12 @@ function SearchForm(onSubmit)
   }
 
   return (
-    <section className="section search">
+    <section className="section search" aria-label='Поиск по фильмам'>
       <form onSubmit={handleSubmit} className='search__form'> 
         <input type="text" className="search__request" name="request" id="input-request" 
           placeholder="Фильм" value={formValues.request} onChange={handleChange} required />
 
-        <input type="submit" className="button search__submit" placeholder="Что вы хотите найти?" 
-          style={{ backgroundImage: `url(${find})` }} minlength="2" maxlength="200" />
+        <input type="submit" className="button search__submit" style={{ backgroundImage: `url(${find})` }} />
         
         <Checkbutton/>
       </form>

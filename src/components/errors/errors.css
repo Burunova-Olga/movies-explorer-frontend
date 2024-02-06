@@ -16,7 +16,7 @@
 
 .submit-error_visible
 {
-  display: visible;
+  display: inline;
 }
 
 .input-error
@@ -37,5 +37,5 @@
 
 .input-error_visible
 {
-  display: visible;
+  display: inline;
 }
