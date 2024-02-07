@@ -19,9 +19,14 @@ function Header()
   return (
     <header className="section header">
       <Link to={"/"}  className='header__logo' style={{ backgroundImage: `url(${logo_mini})` }} />
-      <TypeHeader isAutorize={true} />
+      <NavigationAutorize />
     </header>
   );
 }
 
 export default Header;
+
+/*
+      <TypeHeader isAutorize={true} />
+    
+*/

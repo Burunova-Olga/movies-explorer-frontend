@@ -29,7 +29,7 @@ function Main()
         <Techs />
         <AboutMe />
       </main>
-      <Footer />
+      <Footer />      
     </div>
   );
 }

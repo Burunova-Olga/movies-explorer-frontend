@@ -34,9 +34,12 @@ function App()
       <Route path="/signup" element={<Register onSubmit={signCreate} />} />
       <Route path="/signin" element={<Login onSubmit={signIn} />} />
     
-      <Route path="*" element={<NotFound />} />    
+      <Route path="*" element={<NotFound />} /> 
     </Routes>
   );
 }
 
 export default App;
+/*
+
+*/

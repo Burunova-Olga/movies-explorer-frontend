@@ -25,7 +25,7 @@ function NavigationAutorize()
   return (
     <div className='nav-auth'>
       <button type="button" onClick={toggleClick} className="button nav-auth__toggle" style={{ backgroundImage: `url(${burger})` }} ></button>
-      
+
       <div className='cover'></div>
       <div className='burger'>
         <button type="button" onClick={closeClick} className="button burger__close" style={{ backgroundImage: `url(${close})` }} ></button>
@@ -51,4 +51,9 @@ function NavigationAutorize()
 
 export default NavigationAutorize;
 
+/*
+      
+      
 
+      
+*/

@@ -9,13 +9,15 @@ import Header from '../../header/header';
 
 function SavedMovies()
 {
+  const [showingCards, setShowingCards] = useState(cards.slice(0, 5));
+
   return (
     <>
       <Header />
       <main>
         <SearchForm />
         <MoviesCardList
-          cards={cards}
+          cards={showingCards}
         />
       </main>
       <Footer />
