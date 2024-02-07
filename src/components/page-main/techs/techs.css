@@ -1,0 +1,201 @@
+.techs
+{  
+  min-height: 625px;
+  max-height: min-content;
+  background-color: rgb(39, 39, 39);
+}
+
+@media screen and (max-width: 768px)
+{    
+  .techs
+  {
+    min-height: 567px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .techs
+  {
+    min-height: 651px;
+    background-color: rgb(32, 32, 32);
+  }
+}
+
+/*********************************************/
+
+.techs__header
+{
+  padding-top: 100px;
+}
+
+@media screen and (max-width: 768px)
+{    
+  .techs__header
+  {
+    padding-top: 90px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .techs__header
+  {
+    padding-top: 71px;
+  }
+}
+
+/*********************************************/
+
+.techs__title
+{
+  margin: 90px auto 0;
+  padding: 0;
+
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px)
+{    
+  .techs__title
+  {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 400px)
+{
+  .techs__title
+  {
+    margin-top: 60px;
+    font-size: 30px;
+    line-height: 36.31px;
+  }
+}
+
+/*********************************************/
+
+.techs__paragraph
+{
+  margin: 26px auto 0;
+  padding: 0;
+  max-width: 460px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px)
+{    
+  .techs__paragraph
+  {
+    margin-top: 22px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .techs__paragraph
+  {
+    margin-top: 24px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+/*********************************************/
+
+.techs__table
+{
+  margin: 100px auto 0;
+  padding: 0;
+
+  max-width: 690px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  
+  list-style-type: none;
+}
+
+@media screen and (max-width: 768px)
+{    
+  .techs__table
+  {
+    margin-top: 83px;
+    max-width: 648px;
+  }
+}
+
+@media screen and (max-width: 750px)
+{
+  .techs__table
+  {
+    flex-wrap: wrap;    
+  }
+}
+
+@media screen and (max-width: 500px)
+{  
+  .techs__table
+  {
+    padding-bottom: 70px;
+  }
+}
+
+
+@media screen and (max-width: 320px)
+{
+  .techs__table
+  {
+    justify-content: start;
+    margin-top: 50px;
+    max-width: 180px;
+  }
+}
+
+/*********************************************/
+
+.techs__item
+{
+  margin: 0;
+  padding: 0;
+
+  background-color: rgb(48,48,48);
+  border-radius: 10px;
+
+  width: 90px;
+  min-height: 60px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 768px)
+{    
+  .techs__item
+  {
+    width: 84px;
+    min-height: 57px;
+    
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}

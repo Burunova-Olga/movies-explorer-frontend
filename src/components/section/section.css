@@ -1,0 +1,25 @@
+.section
+{  
+  margin: 0;
+  padding: 0 70px;
+  color: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px)
+{
+  .section
+  {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .section
+  {
+    padding: 0 10px;
+  }
+}
+
+

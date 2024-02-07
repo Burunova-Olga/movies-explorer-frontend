@@ -1,0 +1,44 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+/* page */
+@import url(./components/footer/footer.css);
+@import url(./components/errors/errors.css);
+@import url(./components/page/page.css);
+@import url(./components/section/section.css);
+
+/* header */
+@import url(./components/header/header.css);
+@import url(./components/header/nav-auth/nav-auth.css);
+@import url(./components/header/nav-empty/nav-empty.css);
+
+/* page-main */
+@import url(./components/page-main/main/main.css);
+@import url(./components/page-main/about-me/about-me.css);
+@import url(./components/page-main/about-project/about-project.css);
+@import url(./components/page-main/nav-tab/nav-tab.css);
+@import url(./components/page-main/portfolio/portfolio.css);
+@import url(./components/page-main/promo/promo.css);
+@import url(./components/page-main/techs/techs.css);
+
+/* page-auth */
+@import url(./components/page-auth/auth-form/auth-form.css);
+
+/* page-movies */
+@import url(./components/page-movies/filter-checkbox/filter-checkbox.css);
+@import url(./components/page-movies/movies-card/movies-card.css);
+@import url(./components/page-movies/movies-card-list/movies-card-list.css);
+@import url(./components/page-movies/search-form/search-form.css);
+@import url(./components/page-movies/preloader/preloader.css);
+@import url(./components/page-movies/more/more.css);
+
+/* page-error */
+@import url(./components/page-error/not-found.css);
+
+/* profile */
+@import url(./components/page-profile/page-profile.css);
+
+
+/*
+* { outline: 1px solid red; }
+*/

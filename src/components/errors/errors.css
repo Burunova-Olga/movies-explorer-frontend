@@ -1,0 +1,41 @@
+.submit-error
+{
+  margin: 0 0 10px;
+  padding: 0;
+
+  color: rgb(238, 52, 101);
+
+  display: block;
+  min-height: 12px;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  display: none;
+}
+
+.submit-error_visible
+{
+  display: inline;
+}
+
+.input-error
+{
+  margin: 10px 0 0;
+  padding: 0;
+
+  color: rgb(238, 52, 101);
+
+  display: block;
+  min-height: 12px;
+
+  font-size: 10px;
+  font-weight: 400;
+  
+  display: none;
+}
+
+.input-error_visible
+{
+  display: inline;
+}

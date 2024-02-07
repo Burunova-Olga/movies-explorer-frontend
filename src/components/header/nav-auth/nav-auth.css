@@ -1,0 +1,297 @@
+.nav-auth
+{
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+  margin: 0;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+
+/*********************************************/
+
+.nav-auth__toggle
+{
+  display: none;
+
+  height: 44px;
+  width: 44px;
+
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center; 
+  
+  background-color: inherit;
+}
+
+@media screen and (max-width: 768px)
+{
+  .nav-auth__toggle
+  {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 320px)
+{
+  .nav-auth__toggle
+  {
+    height: 43px;
+    width: 40px;
+  }
+}
+
+/*********************************************/
+
+.burger
+{
+  padding: 0;
+  margin: 0;
+
+  width: 520px;
+  height: 100vh;
+
+  background: rgb(32, 32, 32);
+
+  position: fixed;
+  top: 0;
+  right: -520px;
+  transition: right .5s;
+  z-index: 2;
+  
+  font-size: 18px;
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.burger-opened
+{
+  right: 0;
+}
+
+@media screen and (min-width: 769px)
+{
+  .burger
+  {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 520px)
+{
+  .burger
+  {
+    width: 100%;
+  }
+}
+
+/*********************************************/
+
+.cover
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+}
+
+.cover-visible
+{
+  opacity: 1;
+  z-index: 1;
+}
+
+/*********************************************/
+
+.burger__close
+{
+  margin: 29px 29px 0 auto;
+
+  height: 18px;
+  width: 18px;
+
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center; 
+  
+  background-color: inherit;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  z-index: 2;
+}
+
+@media screen and (max-width: 320px)
+{
+  .burger__close
+  {    
+    margin: 20px 20px 0 auto;
+  }
+}
+/*********************************************/
+
+.burger__link
+{
+  margin: 28px 0 0 0;
+  padding: 0;
+  
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  
+  text-align: center; 
+}
+
+.burger__link:first-of-type
+{
+  margin-top: 113px;
+}
+
+.burger__link:last-of-type
+{
+  margin: auto auto 93px;
+  
+  font-size: 13px;
+  line-height: 12px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 320px)
+{
+  .burger__link
+  {     
+    margin: 25px 0 0 0;
+  }
+  
+  .burger__link:first-of-type
+  {
+    margin-top: 106px;
+  }
+
+  .burger__link:last-of-type
+  {    
+    margin-bottom: 50px;
+  }
+}
+
+/*********************************************/
+.burger__avatar
+{  
+  margin: 0 0 0 9px;
+  padding: 0;
+  height: 26px;
+  width: 26px;
+  display: inline-block;
+
+  border-radius: 50%;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
+/*********************************************/
+
+.simplenav
+{
+  margin: 0 0 0 45px;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 768px)
+{
+  .simplenav
+  {
+    display: none;
+  }
+}
+
+/*********************************************/
+
+.simplenav__avatar
+{  
+  margin: 0 0 0 7px;
+  padding: 0;
+  height: 26px;
+  width: 26px;
+  display: inline-block;
+
+  border-radius: 50%;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
+/*********************************************/
+
+.simplenav__link
+{
+  margin: 0 16px 0 0;
+  padding: 0;
+  
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.simplenav__link:last-of-type
+{
+  margin: 0 4px 0 auto;
+}
+
+@media screen and (max-width: 320px)
+{
+  .simplenav__link
+  {
+    margin-right: 16px;
+  }
+}
+
+/*********************************************/
+
+.link_active
+{  
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px)
+{
+  .link_active
+  {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+  }
+}
