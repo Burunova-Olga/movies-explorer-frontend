@@ -11,7 +11,7 @@ function MoviesCard({ card })
   return (
   <div className="card">
     <a target="_blank" href={card.trailerLink} className="card__link">
-      <img src={card.image.previewUrl} class="card__preview" alt={card.nameRU}/>
+      <img src={card.image.previewUrl} className="card__preview" alt={card.nameRU}/>
     </a>      
     <div className="button card__button" /*onClick={handleLike}*/>
       <h2 className='card__name'>{card.nameRU}</h2>

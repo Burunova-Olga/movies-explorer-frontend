@@ -12,7 +12,7 @@ class Api extends BaseApi
     });
   }
 
-  setUserInfo(name, description)
+  setUserInfo(name, email)
   {
     return this._request
     ({
@@ -21,22 +21,8 @@ class Api extends BaseApi
       body: JSON.stringify
         ({
           name: name,
-          about: description
+          email: email
         }),
-      moreHeader: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
-    })
-  }
-
-  setUserAvatar(link)
-  {
-    return this._request
-    ({
-      method: 'PATCH',
-      url: "/users/me/avatar",
-      body: JSON.stringify
-        ({
-          avatar: link
-        }),        
       moreHeader: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
     })
   }

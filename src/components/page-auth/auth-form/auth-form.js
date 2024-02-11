@@ -4,9 +4,12 @@ import React from 'react';
 import { useFormWithValidation } from "../../../hooks/UseForm";
 import { Link } from 'react-router-dom';
 import logo from '../../../images/logo.svg';
+import { ServerErrorContext } from '../../../contexts/ServerErrorContext';
 
-function AuthForm({isRegister, title, submmitText, questionText, linkText, link, onSubmit, serverError})
+function AuthForm({isRegister, title, submmitText, questionText, linkText, link, onSubmit})
 { 
+  const serverError = React.useContext(ServerErrorContext);
+
   const {formValues, handleChange, errors, isValid} = useFormWithValidation ({ name: '', email: '', password: ''});
   
   const handleSubmit = (e) =>
@@ -16,16 +19,8 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
     if (!formValues.email || !formValues.password || (isRegister && !formValues.name))    
       return;
 
-    const result = onSubmit(formValues.email, formValues.password, formValues.name);
-     console.log(result);
-    /*.then((res) =>
-      {
-      //  .then(data => Promise.reject(data))
-        console.log(1);
-        console.log(res);
-        return res;
-      });*/
-    } 
+    onSubmit(formValues.email, formValues.password, formValues.name);
+  } 
   
 
   return (

@@ -9,13 +9,30 @@ import Register from '../page-auth/register/register';
 import Login from '../page-auth/login/login';
 import NotFound from '../page-error/not-found';
 
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { ServerErrorContext } from '../../contexts/ServerErrorContext';
+
 import auth from "../../utils/Auth";
+import mainApi from "../../utils/MainApi";
 
 function App()
 {  
+  const [currentUser, setCurrentUser] = React.useState(
+    {
+      name: 'Жак-Ив Кусто',
+      email: 'admin@test.ru'
+    });
+
   const [loggedIn, setLoggedIn] = useState(false);
+
   const [serverError, setServerError] = useState('');
   const navigate = useNavigate();
+
+  function setLogin(isLogin, userName, userEmail)
+  {
+    setLoggedIn(isLogin);
+    setCurrentUser({name: userName, email: userEmail});
+  }
 
   // Регистрация
   function signCreate(email, password, name)
@@ -39,10 +56,8 @@ function App()
       .then((data) =>
       {
         if (data.token)
-        {            
-          setLoggedIn(true);
-          navigate('/movies', {replace: true});
-        }
+          askAboutMe(data.token);
+          navigate("/movies", {replace: true})
       })
       .catch((err) => 
       {
@@ -50,23 +65,69 @@ function App()
       });
   }  
 
-  const userInfo = 
+  function askAboutMe(token)
   {
-    name: "Виталий",
-    email: "pochta@yandex.ru"
+    auth.checkToken(token)
+      .then((res) =>
+      {     
+        if (res)
+          setLogin(true, localStorage.getItem('userName'), localStorage.getItem('userEmail'));
+      })
+      .catch((err) => 
+      {
+        setServerError(err.message);
+      });
   }
 
+  // Разавторизация
+  function signOut()
+  {
+    localStorage.removeItem('token');   
+    localStorage.removeItem('userName'); 
+    localStorage.removeItem('userEmail'); 
+    setLogin(false, '', '');
+    navigate("/signin");
+  }
+
+  function changeProfile(newName, newEmail)
+  {
+    setServerError('');
+    mainApi.setUserInfo(newName, newEmail)
+      .then((result) =>
+      {
+        setCurrentUser(result);
+      })
+      .catch((err) => 
+      {
+        setServerError(err.message);
+      });
+  }
+
+  // Проверка на авторизованного пользователя
+  useEffect(() =>
+  {
+    if (localStorage.getItem('token'))
+    {
+      const token = localStorage.getItem('token');
+      askAboutMe(token);
+    }
+  }, [localStorage.getItem('token')])
+
   return (
-    <Routes>
-      <Route path="/" element={<Main/>} />
-      <Route path="/movies" element={<Movies/>} />
-      <Route path="/saved-movies" element={<SavedMovies/>} />
-      <Route path="/profile" element={<Profile user={userInfo}/>} />
-      <Route path="/signup" element={<Register onSubmit={signCreate} serverError={serverError}/>} />
-      <Route path="/signin" element={<Login onSubmit={signIn} serverError={serverError}/>} />
-    
-      <Route path="*" element={<NotFound />} /> 
-    </Routes>
+    <CurrentUserContext.Provider value={currentUser}>  
+    <ServerErrorContext.Provider value={serverError}>      
+      <Routes>
+        <Route path="/" element={<Main/>} />
+        <Route path="/movies" element={<Movies/>} />
+        <Route path="/saved-movies" element={<SavedMovies/>} />
+        <Route path="/profile" element={<Profile signOut={signOut} onSubmit={changeProfile}/>} />
+        <Route path="/signup" element={<Register onSubmit={signCreate}/>} />
+        <Route path="/signin" element={<Login onSubmit={signIn}/>} />
+      
+        <Route path="*" element={<NotFound />} /> 
+      </Routes>
+    </ServerErrorContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }
 

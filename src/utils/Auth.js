@@ -29,11 +29,10 @@ class Auth extends BaseApi
         if (data.token)
         {
           localStorage.setItem('token', data.token);
-          localStorage.setItem('username', email);
           return data;
         }
-        else
-          console.log(data.message);
+        else 
+          return data.message;
       })
   };
 
@@ -45,7 +44,12 @@ class Auth extends BaseApi
         url: "/users/me",
         moreHeader: { 'authorization': `Bearer ${request}` },
       })
-      .then(data => data)
+      .then((data) =>
+      {
+        localStorage.setItem('userName', data.message.name);
+        localStorage.setItem('userEmail', data.message.email);
+        return data;
+      })
   }
 }
 
