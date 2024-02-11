@@ -21,7 +21,7 @@ function AboutMe()
           <a target="_blank" href="https://github.com/Burunova-Olga" className='link about-me__link'>Github</a>
         </article>
         
-        <img src={photo} class="about-me__photo" alt='Это я'/>
+        <img src={photo} className="about-me__photo" alt='Это я'/>
       </div>
       
       <Portfolio />

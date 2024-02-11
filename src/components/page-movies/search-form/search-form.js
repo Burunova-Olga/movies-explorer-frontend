@@ -1,7 +1,7 @@
 // форма поиска, куда пользователь будет вводить запрос
 
 import React from 'react';
-import useForm from "../../../hooks/UseForm";
+import { useForm } from "../../../hooks/UseForm";
 import find from '../../../images/find.svg';
 import Checkbutton from '../filter-checkbox/filter-checkbox';
 

@@ -16,7 +16,7 @@
 
 .submit-error_visible
 {
-  display: inline;
+  display: block;
 }
 
 .input-error
@@ -26,7 +26,6 @@
 
   color: rgb(238, 52, 101);
 
-  display: block;
   min-height: 12px;
 
   font-size: 10px;
@@ -37,5 +36,5 @@
 
 .input-error_visible
 {
-  display: inline;
+  display: block;
 }

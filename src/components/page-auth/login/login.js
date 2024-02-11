@@ -2,7 +2,7 @@
 
 import AuthForm from '../auth-form/auth-form';
 
-function Login({onSubmit})
+function Login({onSubmit, serverError})
 {
   return (
     <AuthForm
@@ -13,6 +13,7 @@ function Login({onSubmit})
       linkText="Регистрация"
       link="/signup"
       onSubmit={onSubmit}
+      serverError={serverError}
     />
   );
 }
