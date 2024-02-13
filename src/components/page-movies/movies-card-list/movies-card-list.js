@@ -3,11 +3,12 @@
 import React from 'react';
 import MoviesCard from '../movies-card/movies-card';
 
-function MoviesCardList({ cards })
-{
-  return (
-    <section className="section movies-card-list">
-      {
+function MoviesCardList({cards})
+{  
+  if (Array.isArray(cards))
+    return (
+      <section className="section movies-card-list">
+        {
           cards.map((item) =>
           {
             return (<MoviesCard
@@ -16,8 +17,8 @@ function MoviesCardList({ cards })
             />)
           })
         }
-    </section>
-  );
+      </section>
+    );
 }
 
 export default MoviesCardList;

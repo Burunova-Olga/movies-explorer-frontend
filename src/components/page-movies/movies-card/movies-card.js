@@ -4,14 +4,16 @@ import React from 'react';
 
 function MoviesCard({ card })
 {
+  console.log(card);
   const currentPath = window.location.pathname;
   const hours = Math.floor(card.duration/60);
   const minutes = card.duration % 60;
+  const baseUrl = 'https://api.nomoreparties.co/';
 
   return (
   <div className="card">
     <a target="_blank" href={card.trailerLink} className="card__link">
-      <img src={card.image.previewUrl} className="card__preview" alt={card.nameRU}/>
+      <img src={baseUrl + card.image.url} className="card__preview" alt={card.nameRU}/>
     </a>      
     <div className="button card__button" /*onClick={handleLike}*/>
       <h2 className='card__name'>{card.nameRU}</h2>

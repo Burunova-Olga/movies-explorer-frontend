@@ -14,25 +14,21 @@ import { ServerErrorContext } from '../../contexts/ServerErrorContext';
 
 import auth from "../../utils/Auth";
 import mainApi from "../../utils/MainApi";
+import moviesApi from "../../utils/MoviesApi";
 
 function App()
 {  
   const [currentUser, setCurrentUser] = React.useState(
     {
       name: 'Жак-Ив Кусто',
-      email: 'admin@test.ru'
+      email: 'admin@test.ru',
+      loggedIn: false
     });
 
-  const [loggedIn, setLoggedIn] = useState(false);
-
   const [serverError, setServerError] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [isPreloaderShow, setIsPreloaderShow] = useState(false);
   const navigate = useNavigate();
-
-  function setLogin(isLogin, userName, userEmail)
-  {
-    setLoggedIn(isLogin);
-    setCurrentUser({name: userName, email: userEmail});
-  }
 
   // Регистрация
   function signCreate(email, password, name)
@@ -65,13 +61,19 @@ function App()
       });
   }  
 
+  // Запрос информации о пользователе
   function askAboutMe(token)
   {
     auth.checkToken(token)
       .then((res) =>
       {     
-        if (res)
-          setLogin(true, localStorage.getItem('userName'), localStorage.getItem('userEmail'));
+        if (res) 
+          setCurrentUser(
+          {
+            name: localStorage.getItem('userName'), 
+            email: localStorage.getItem('userEmail'),
+            loggedIn: true
+          });
       })
       .catch((err) => 
       {
@@ -85,8 +87,48 @@ function App()
     localStorage.removeItem('token');   
     localStorage.removeItem('userName'); 
     localStorage.removeItem('userEmail'); 
-    setLogin(false, '', '');
+    setCurrentUser({name: '', email: '', loggedIn: false});
     navigate("/signin");
+  }
+
+  // Запрос фильмов от сервера
+  function getMovies()
+  {
+    // Если в локальном хранилище еще не лежат фильмы
+    if (localStorage.getItem('allMovies') === null)
+    {
+      setIsPreloaderShow(true);
+      moviesApi.getMovies()
+        .then((moviesData) =>
+        {
+          localStorage.setItem('allMovies', JSON.stringify(moviesData));
+        })
+        .catch((err) => 
+        {
+          setServerError(err.message);
+        })
+        .finally(() =>
+        {
+          setIsPreloaderShow(false);
+        })   
+    }
+
+    // А если они там есть, то и хорошо
+    return localStorage.getItem('allMovies');
+  }
+
+  // Запрос фильмов 
+  function onSearch(request)
+  {
+    const allMovies = JSON.parse(getMovies());
+
+    const filtrMovies = [];
+    allMovies.forEach((item) =>
+    {
+      if (item.nameRU.includes(request) || item.nameEN.includes(request))
+        filtrMovies.push(item);
+    });
+    setMovies(filtrMovies);
   }
 
   function changeProfile(newName, newEmail)
@@ -103,6 +145,12 @@ function App()
       });
   }
 
+  // Прелоадер
+  useEffect(() =>
+  {
+    
+  }, [isPreloaderShow])
+
   // Проверка на авторизованного пользователя
   useEffect(() =>
   {
@@ -118,7 +166,7 @@ function App()
     <ServerErrorContext.Provider value={serverError}>      
       <Routes>
         <Route path="/" element={<Main/>} />
-        <Route path="/movies" element={<Movies/>} />
+        <Route path="/movies" element={<Movies cards={movies} onSearch={onSearch} preloaderVisible={isPreloaderShow}/>} />
         <Route path="/saved-movies" element={<SavedMovies/>} />
         <Route path="/profile" element={<Profile signOut={signOut} onSubmit={changeProfile}/>} />
         <Route path="/signup" element={<Register onSubmit={signCreate}/>} />

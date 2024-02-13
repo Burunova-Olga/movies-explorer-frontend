@@ -31,8 +31,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
         
         <form onSubmit={handleSubmit} className='auth-form__form'> 
           <div className='fields'>
-            {isRegister
-              ? 
+            {isRegister && 
                 <fieldset className='auth-form__line'>
                   <p className='auth-form__comment'>Имя</p>
                   <input type="text" className='auth-form__input' name="name" id="input-name" 
@@ -40,8 +39,6 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
                     minLength="2" maxLength="40" required pattern="[a-zA-Zа-яА-ЯёЁ\s\-]*"/>
                   <span className={`error input-error ${errors.name!="" ? 'input-error_visible' : ''}`} >{errors.name}</span>
                 </fieldset>
-              : 
-                <></>
             }
 
             <fieldset className='auth-form__line'>          
@@ -65,7 +62,8 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
             <span className={`error submit-error ${serverError!="" ? 'submit-error_visible' : ''}`}>
               {serverError}
             </span>
-            <input type="submit" className="button auth-form__submit" name="submit" value={submmitText} disabled={!isValid}/>
+            <input type="submit" name="submit" value={submmitText} disabled={!isValid}
+            className={`button auth-form__submit ${!isValid ? 'auth-form__submit-disabled' : ''}`} />
           </div>
         </form>
 

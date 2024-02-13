@@ -5,7 +5,7 @@ import { useForm } from "../../../hooks/UseForm";
 import find from '../../../images/find.svg';
 import Checkbutton from '../filter-checkbox/filter-checkbox';
 
-function SearchForm(onSubmit)
+function SearchForm({onSubmit})
 {
   const {formValues, handleChange, setFormValues} = useForm ({ request: ''});
  

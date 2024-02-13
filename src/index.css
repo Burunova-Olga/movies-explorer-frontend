@@ -25,12 +25,14 @@
 @import url(./components/page-auth/auth-form/auth-form.css);
 
 /* page-movies */
+@import url(./components/page-movies/movies/moveies.css);
 @import url(./components/page-movies/filter-checkbox/filter-checkbox.css);
 @import url(./components/page-movies/movies-card/movies-card.css);
 @import url(./components/page-movies/movies-card-list/movies-card-list.css);
 @import url(./components/page-movies/search-form/search-form.css);
 @import url(./components/page-movies/preloader/preloader.css);
 @import url(./components/page-movies/more/more.css);
+@import url(./components/page-movies/preloader/preloader.css);
 
 /* page-error */
 @import url(./components/page-error/not-found.css);

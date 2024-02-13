@@ -201,6 +201,12 @@
 
 /*********************************************/
 
+.profile__button-disabled
+{
+  cursor: default;
+  background-color: rgb(47, 47, 47);
+}
+
 .profile__button-invisible
 {
   display: none;

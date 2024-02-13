@@ -2,13 +2,12 @@ import BaseApi from './BaseApi';
 
 class Api extends BaseApi
 {
-  getInitialCards()
+  getMovies()
   {
     return this._request
     ({
       method: 'GET',
-      url: "/cards",
-      moreHeader: { 'authorization': `Bearer ${localStorage.getItem('token')}`}
+      url: "/",
     });
   }
 
@@ -51,7 +50,7 @@ class Api extends BaseApi
 
 const api = new Api 
 ({ 
-  baseUrl: ' https://api.nomoreparties.co/beatfilm-movies',  
+  baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',  
   headers:
   {
     'Content-Type': 'application/json'

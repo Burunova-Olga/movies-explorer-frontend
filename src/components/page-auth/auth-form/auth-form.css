@@ -182,6 +182,12 @@
   background-color: rgb(66, 133, 244);
 }
 
+.auth-form__submit-disabled
+{
+  cursor: default;
+  background-color: rgb(47, 47, 47);
+}
+
 @media screen and (max-width: 420px)
 {
   .auth-form__submit

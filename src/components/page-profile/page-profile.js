@@ -38,8 +38,6 @@ function Profile({ signOut, onSubmit })
     document.querySelector('.profile-form__submit').classList.toggle('profile__button-invisible')
   }
 
-
-
   return (
     <>
       <Header />
@@ -71,7 +69,8 @@ function Profile({ signOut, onSubmit })
               <span className={`error submit-error ${serverError!="" ? 'submit-error_visible' : ''}`}>
                 {serverError}
               </span>
-              <input type="submit" className="button profile-form__submit profile__button profile__button-invisible" value="Сохранить" />
+              <input type="submit" name="submit" value="Сохранить" disabled={!isValid}
+              className={`button profile-form__submit profile__button profile__button-invisible  ${!isValid ? 'profile__button-disabled' : ''}`} />
             </div>
           </form>
           
