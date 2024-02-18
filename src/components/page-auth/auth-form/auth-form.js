@@ -37,7 +37,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
                   <input type="text" className='auth-form__input' name="name" id="input-name" 
                     value={formValues.name} onInput={handleChange} placeholder="Введите имя" 
                     minLength="2" maxLength="40" required pattern="[a-zA-Zа-яА-ЯёЁ\s\-]*"/>
-                  <span className={`error input-error ${errors.name!="" ? 'input-error_visible' : ''}`} >{errors.name}</span>
+                  <span className={`error input-error ${errors.name!="" ? 'error_visible' : ''}`} >{errors.name}</span>
                 </fieldset>
             }
 
@@ -46,7 +46,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
               <input type="email" className="auth-form__input" name="email" id="input-email"
                 value={formValues.email} onInput={handleChange} placeholder="Ввведите почту" 
                 minLength="2" maxLength="40" required />
-              <span className={`error input-error ${errors.email!="" ? 'input-error_visible' : ''}`}>{errors.email}</span>
+              <span className={`error input-error ${errors.email!="" ? 'error_visible' : ''}`}>{errors.email}</span>
             </fieldset>
 
             <fieldset className='auth-form__line'>   
@@ -54,12 +54,12 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
               <input type="password" className="auth-form__input" name="password" id="input-password"
                 value={formValues.password} onInput={handleChange} placeholder="Введите пароль" 
                 minLength="8" maxLength="20" required />
-              <span className={`error input-error ${errors.password!="" ? 'input-error_visible' : ''}`}>{errors.password}</span>
+              <span className={`error input-error ${errors.password!="" ? 'error_visible' : ''}`}>{errors.password}</span>
             </fieldset>
           </div>
           
           <div> 
-            <span className={`error submit-error ${serverError!="" ? 'submit-error_visible' : ''}`}>
+            <span className={`error submit-error ${serverError!="" ? 'error_visible' : ''}`}>
               {serverError}
             </span>
             <input type="submit" name="submit" value={submmitText} disabled={!isValid}

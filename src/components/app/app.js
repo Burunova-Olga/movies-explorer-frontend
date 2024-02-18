@@ -68,12 +68,21 @@ function App()
       .then((res) =>
       {     
         if (res) 
+        {
           setCurrentUser(
           {
             name: localStorage.getItem('userName'), 
             email: localStorage.getItem('userEmail'),
             loggedIn: true
           });
+
+          mainApi.getMovies()
+            .then((data) =>
+            {
+              localStorage.setItem('savedMovies', JSON.stringify(data));
+            });
+        }
+
       })
       .catch((err) => 
       {
@@ -87,6 +96,8 @@ function App()
     localStorage.removeItem('token');   
     localStorage.removeItem('userName'); 
     localStorage.removeItem('userEmail'); 
+    localStorage.removeItem('isShortMovies'); 
+    localStorage.removeItem('request'); 
     setCurrentUser({name: '', email: '', loggedIn: false});
     navigate("/signin");
   }

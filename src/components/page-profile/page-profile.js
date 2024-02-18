@@ -53,7 +53,7 @@ function Profile({ signOut, onSubmit })
                   name="name" id="input-name" value={formValues.name} onChange={handleChange} 
                   placeholder='Введите новое имя' minLength="2" maxLength="40" 
                   pattern="[a-zA-Zа-яА-ЯёЁ\s\-]*" required />              
-                <span className={`error input-error ${errors.name!="" ? 'input-error_visible' : ''}`} >{errors.name}</span>
+                <span className={`error input-error ${errors.name!="" ? 'error_visible' : ''}`} >{errors.name}</span>
               </fieldset>
 
               <fieldset className='profile-form__field'>
@@ -61,12 +61,12 @@ function Profile({ signOut, onSubmit })
                 <input type="email" className="profile-form__input" name="email" id="input-email"
                   value={formValues.email} onChange={handleChange} placeholder='Введите новую почту'
                   minLength="2" maxLength="40" required />              
-                  <span className={`error input-error ${errors.email!="" ? 'input-error_visible' : ''}`}>{errors.email}</span>
+                  <span className={`error input-error ${errors.email!="" ? 'error_visible' : ''}`}>{errors.email}</span>
               </fieldset>
             </div>
 
             <div> 
-              <span className={`error submit-error ${serverError!="" ? 'submit-error_visible' : ''}`}>
+              <span className={`error submit-error ${serverError!="" ? 'error_visible' : ''}`}>
                 {serverError}
               </span>
               <input type="submit" name="submit" value="Сохранить" disabled={!isValid}

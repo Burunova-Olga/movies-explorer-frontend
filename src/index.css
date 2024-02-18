@@ -25,7 +25,7 @@
 @import url(./components/page-auth/auth-form/auth-form.css);
 
 /* page-movies */
-@import url(./components/page-movies/movies/moveies.css);
+@import url(./components/page-movies/movies/movies.css);
 @import url(./components/page-movies/filter-checkbox/filter-checkbox.css);
 @import url(./components/page-movies/movies-card/movies-card.css);
 @import url(./components/page-movies/movies-card-list/movies-card-list.css);
