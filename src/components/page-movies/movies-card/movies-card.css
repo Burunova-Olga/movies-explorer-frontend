@@ -194,7 +194,7 @@
   background-image: url(../../../images/save.svg);
 }
 
-.card__button:hover .card__save
+.card__saved
 { 
   background-image: url(../../../images/saved.svg);
 }

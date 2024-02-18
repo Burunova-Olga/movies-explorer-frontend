@@ -5,9 +5,9 @@ import { useForm } from "../../../hooks/UseForm";
 import find from '../../../images/find.svg';
 import Checkbutton from '../filter-checkbox/filter-checkbox';
 
-function SearchForm({onSubmit})
+function SearchForm({onSubmit, request})
 {
-  const {formValues, handleChange, setFormValues} = useForm ({ request: localStorage.getItem('request')});
+  const {formValues, handleChange, setFormValues} = useForm ({ request: request});
  
   const handleSubmit = (e) =>
   {

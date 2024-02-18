@@ -8,26 +8,39 @@ import More from '../more/more';
 import Header from '../../header/header';
 import Preloader from '../preloader/preloader';
 import moviesApi from "../../../utils/MoviesApi";
-import mainApi from "../../../utils/MainApi";
 
-function Movies({onSearch})
+function Movies({onSearch, savedMovies, addMovie, deleteMovie})
 {
   const [isPreloaderShow, setIsPreloaderShow] = useState(false);
   const [cards, setCards] = useState([]);
   const [typeScreen, setTypeScreen] = useState("desktop");
   const [countShowingCards, setCountShowingCards] = useState(12);
   const [isMoreShow, setMoreShow] = useState(false);
-
+  
   // При загрузке страницы
   useEffect(() =>
   {    
+    // Если в хранилище есть результаты поиска
+    if (localStorage.getItem('foundMovies') != null)
+    {
+      document.querySelector('.found-error').classList.remove('error_visible');
+      document.querySelector('.server-error').classList.remove('error_visible');
+      
+      const foundMovies = JSON.parse(localStorage.getItem('foundMovies'));
+      setCards(foundMovies);
+
+      // Если поиск не нулевой, а пустой
+      if (foundMovies.length === 0)
+        document.querySelector('.found-error').classList.add('error_visible');
+    }
+
     // Если есть сохранённый запрос - считаем его отправленным
-    if (localStorage.getItem('isShortMovies') != null &&
+    else if (localStorage.getItem('isShortMovies') != null &&
         localStorage.getItem('request') != null )
       {
         getMovies();        
       }
-
+  
     getCountMovies();
   }, [])
 
@@ -104,6 +117,7 @@ function Movies({onSearch})
         if (filtrMovies.length === 0)
           document.querySelector('.found-error').classList.add('error_visible');
 
+        localStorage.setItem('foundMovies', JSON.stringify(filtrMovies));
         setCards(filtrMovies);
       })
       .catch((err) =>
@@ -118,9 +132,7 @@ function Movies({onSearch})
 
   // Открытие дополнительного ряда карточек
   function moreClick() 
-  {
-    console.log(typeScreen);
-    
+  {    
     let delta = 0;
     switch (typeScreen)
     {
@@ -140,28 +152,11 @@ function Movies({onSearch})
     setCountShowingCards(countShowingCards + delta);
   }
 
-  // Пользователь сохранил фильм
-  function onLike({movie})
-  {
-    mainApi.addNewCard({movie})
-      .then((moviesData) =>
-      {
-      })
-      .catch((err) => 
-      {
-        // setServerError(err.message);
-      })
-      .finally(() =>
-      {
-        setIsPreloaderShow(false);
-      })  
-  }
-
   return (
     <>
       <Header />
       <main className='movies'>
-        <SearchForm onSubmit={updateRequest}/>
+        <SearchForm onSubmit={updateRequest} request={ localStorage.getItem('request')}/>
         {isPreloaderShow && <Preloader />}
         <p className="error found-error">Ничего не найдено</p>
         <p className="error server-error">
@@ -171,7 +166,9 @@ function Movies({onSearch})
         <MoviesCardList 
           cards={cards}
           countShowingCards={countShowingCards}
-          onLike={onLike} 
+          savedMovies={savedMovies}
+          addMovie={addMovie} 
+          deleteMovie={deleteMovie}
         />
         {isMoreShow && <More onClick={moreClick} />}
       </main>

@@ -18,6 +18,7 @@ import mainApi from "../../utils/MainApi";
 function App()
 {  
   const [serverError, setServerError] = useState('');
+  const [savedMovies, setSavedMovies] = useState([]);
   const navigate = useNavigate();
 
   /////////////////////////////////////////////////////
@@ -76,11 +77,7 @@ function App()
             loggedIn: true
           });
 
-          mainApi.getMovies()
-            .then((data) =>
-            {
-              localStorage.setItem('savedMovies', JSON.stringify(data));
-            });
+          getSavedMovies();
         }
 
       })
@@ -97,7 +94,9 @@ function App()
     localStorage.removeItem('userName'); 
     localStorage.removeItem('userEmail'); 
     localStorage.removeItem('isShortMovies'); 
-    localStorage.removeItem('request'); 
+    localStorage.removeItem('request');
+    localStorage.removeItem('savedMovies'); 
+    localStorage.removeItem('foundMovies'); 
     setCurrentUser({name: '', email: '', loggedIn: false});
     navigate("/signin");
   }
@@ -149,6 +148,50 @@ function App()
     });
     return filtrMovies;
   }
+  
+  // Запрос сохранённых фильмов
+  function getSavedMovies()
+  {
+    mainApi.getMovies()
+      .then((data) =>
+      {
+        localStorage.setItem('savedMovies', JSON.stringify(data));
+        setSavedMovies(data);
+      })
+      .catch((err) => 
+      {
+        setServerError(err.message);
+      });
+  }
+
+  // Пользователь сохранил фильм
+  function addMovie({movie})
+  {
+    mainApi.addNewCard({movie})
+      .then((data) =>
+      {
+        getSavedMovies();
+      })
+      .catch((err) => 
+      {
+        setServerError(err.message);
+      })
+  }
+
+  // Пользователь удалил фильм
+  function deleteMovie(movieId)
+  {
+    mainApi.deleteCard(movieId)
+      .then((data) =>
+      {        
+        getSavedMovies();
+      })
+      .catch((err) => 
+      {
+        setServerError(err.message);
+      }) 
+  }
+
 
   /////////////////////////////////////////////////////
   //                     ROUTES  
@@ -158,7 +201,7 @@ function App()
     <ServerErrorContext.Provider value={serverError}>      
       <Routes>
         <Route path="/" element={<Main/>} />
-        <Route path="/movies" element={<Movies onSearch={onSearch} />} />
+        <Route path="/movies" element={<Movies onSearch={onSearch} savedMovies={savedMovies} addMovie={addMovie} deleteMovie={deleteMovie}/>} />
         <Route path="/saved-movies" element={<SavedMovies/>} />
         <Route path="/profile" element={<Profile signOut={signOut} onSubmit={changeProfile}/>} />
         <Route path="/signup" element={<Register onSubmit={signCreate}/>} />

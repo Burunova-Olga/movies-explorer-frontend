@@ -6,7 +6,8 @@ function Checkbutton({onClick})
 {  
   useEffect(() =>
   {
-    if (localStorage.getItem('isShortMovies') != null )
+    const currentPath = window.location.pathname;
+    if (currentPath == "/movies" && localStorage.getItem('isShortMovies') != null )
       {
         const isChecked = JSON.parse(localStorage.getItem('isShortMovies'));
         document.querySelector('.checkbutton__input').checked = isChecked;        

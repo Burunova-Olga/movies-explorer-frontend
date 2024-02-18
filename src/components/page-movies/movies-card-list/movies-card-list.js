@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import MoviesCard from '../movies-card/movies-card';
 
-function MoviesCardList({cards, countShowingCards, onLike})
+function MoviesCardList({cards, countShowingCards, savedMovies, addMovie, deleteMovie})
 {  
   if (Array.isArray(cards))
   {
@@ -16,7 +16,9 @@ function MoviesCardList({cards, countShowingCards, onLike})
             return (<MoviesCard
               card={item}
               key={item.id}
-              onLike={onLike}
+              savedMovies={savedMovies}
+              addMovie={addMovie}
+              deleteMovie={deleteMovie}
             />)
           })
         }

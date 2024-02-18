@@ -63,23 +63,12 @@ class Api extends BaseApi
     })
   }
 
-  changeLike(cardId, isLike)
-  {
-    const method = isLike ? 'PUT' : 'DELETE';
-    return this._request
-    ({
-      method: method,
-      url: `/cards/${cardId}/likes`,
-      moreHeader: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
-    });
-  }
-
   deleteCard(cardId)
   {
     return this._request
     ({
       method: 'DELETE',
-      url: `/cards/${cardId}`,
+      url: `/movies/${cardId}`,
       moreHeader: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
     });
   }
