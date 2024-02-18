@@ -1,23 +1,27 @@
 // форма поиска, куда пользователь будет вводить запрос
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useForm } from "../../../hooks/UseForm";
 import find from '../../../images/find.svg';
 import Checkbutton from '../filter-checkbox/filter-checkbox';
 
 function SearchForm({onSubmit})
 {
-  const {formValues, handleChange, setFormValues} = useForm ({ request: ''});
+  const {formValues, handleChange, setFormValues} = useForm ({ request: localStorage.getItem('request')});
  
   const handleSubmit = (e) =>
   {
     e.preventDefault();
+    sendReqest();
+  }
 
+  const sendReqest = (e) =>
+  {
     if (!formValues.request)    
       return;
       
     const checkbox = document.getElementById('short-films');
-    onSubmit(formValues.request, checkbox.checked);    
+    onSubmit({request: formValues.request, isShortMovies: checkbox.checked});    
   }
 
   return (
@@ -28,7 +32,7 @@ function SearchForm({onSubmit})
 
         <input type="submit" className="button search__submit" style={{ backgroundImage: `url(${find})` }} />
         
-        <Checkbutton/>
+        <Checkbutton onClick={sendReqest}/>
       </form>
     </section>
   );

@@ -4,7 +4,6 @@ import React from 'react';
 
 function MoviesCard({ card })
 {
-  console.log(card);
   const currentPath = window.location.pathname;
   const hours = Math.floor(card.duration/60);
   const minutes = card.duration % 60;
