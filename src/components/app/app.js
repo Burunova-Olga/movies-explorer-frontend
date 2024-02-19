@@ -64,6 +64,7 @@ function App()
   // Регистрация
   function signCreate(email, password, name)
   { 
+    setServerError('');
     auth.register(email, password, name)
       .then((res) =>
       {
@@ -79,6 +80,7 @@ function App()
   // Авторизация
   function signIn(email, password)
   {
+    setServerError('');
     auth.authorize(email, password)
       .then((data) =>
       {

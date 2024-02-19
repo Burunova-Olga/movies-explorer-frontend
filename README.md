@@ -1,7 +1,9 @@
 # movies-explorer-frontend
 Репозиторий для фронтендной части приложения дипломного проекта.
 
-Адрес репозитория: https://github.com/Burunova-Olga/movies-explorer-frontend/tree/level-2
+Адрес репозитория: https://github.com/Burunova-Olga/movies-explorer-frontend/
+Адрес домена: burunova.diploma.nomoredomainswork.ru
+Ссылка на ull-request: https://github.com/Burunova-Olga/movies-explorer-frontend/pull/2
 
 ## Ссылка на макет
 
