@@ -1,14 +1,14 @@
 # movies-explorer-frontend
 Репозиторий для фронтендной части приложения дипломного проекта.
 
-// Все ссылки изначально указаны.
+// Прошу прощения, скачала архив не той ветки
 // Приложенный Вами скриншот старше 6 месяцев и отображается только по подписке
 
 Адрес репозитория: https://github.com/Burunova-Olga/movies-explorer-frontend/
 
 ## Ссылка на работающий фронт
 
-Адрес домена: https://burunova.diploma.nomoredomainswork.ru
+https://burunova.diploma.nomoredomainswork.ru
 
 ## Ссылка на pull-request
 
