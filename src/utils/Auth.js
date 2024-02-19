@@ -46,8 +46,6 @@ class Auth extends BaseApi
       })
       .then((data) =>
       {
-        localStorage.setItem('userName', data.message.name);
-        localStorage.setItem('userEmail', data.message.email);
         return data;
       })
   }

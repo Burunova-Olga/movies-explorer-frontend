@@ -9,7 +9,7 @@ import Header from '../../header/header';
 import Preloader from '../preloader/preloader';
 import moviesApi from "../../../utils/MoviesApi";
 
-function Movies({onSearch, savedMovies, addMovie, deleteMovie})
+function Movies({onSearch, addMovie, deleteMovie})
 {
   const [isPreloaderShow, setIsPreloaderShow] = useState(false);
   const [cards, setCards] = useState([]);
@@ -166,7 +166,6 @@ function Movies({onSearch, savedMovies, addMovie, deleteMovie})
         <MoviesCardList 
           cards={cards}
           countShowingCards={countShowingCards}
-          savedMovies={savedMovies}
           addMovie={addMovie} 
           deleteMovie={deleteMovie}
         />

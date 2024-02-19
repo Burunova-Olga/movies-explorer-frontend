@@ -1,20 +1,23 @@
 // компонент одной карточки фильма
 
 import React, { useEffect, useState } from 'react';
+import { SavedMoviesContext } from '../../../contexts/SavedMoviesContext';
 
-function MoviesCard({ card, savedMovies, addMovie, deleteMovie })
+function MoviesCard({ card, addMovie, deleteMovie })
 {
+  const savedMovies = React.useContext(SavedMoviesContext);
+
   const [typeBtn, setTypeBtn] = useState('card__save');
   const [linkTrailer, setLinkTrailer] = useState('');
   const [savedId, setSavedId] = useState('');
 
+  const currentPath = window.location.pathname;
   const hours = Math.floor(card.duration / 60);
   const minutes = card.duration % 60;
   const baseUrl = 'https://api.nomoreparties.co/';
 
   useEffect(() =>
   {
-    const currentPath = window.location.pathname;
     if (currentPath == "/movies")
     {
       setLinkTrailer(baseUrl + card.image.url);
@@ -37,26 +40,25 @@ function MoviesCard({ card, savedMovies, addMovie, deleteMovie })
     else 
     {
       setTypeBtn("card__delete");
-      setLinkTrailer(card.image);
-
-      if (savedMovies != null)
-      {
-        const movie = savedMovies.find(item => item.movieId === card.id);
-    
-        // Текущий элемент точно есть в списке сохранённых
-        // Но на всякий случай
-        if (movie != null)
-          setSavedId(movie._id);
-      }
+      setLinkTrailer(card.image);      
+      setSavedId(card._id);
     }
   }, [savedMovies])
 
   function handleLike()
   {
-    if (savedId != '')
-      deleteMovie(savedId);
+    if (currentPath == "/movies")
+    {
+      if (savedId != '')
+        deleteMovie(savedId);
+      else
+        addMovie({ movie: card });
+    }
     else
-      addMovie({ movie: card });
+    {  
+      if (savedId != '')
+        deleteMovie(savedId);
+    }
   }
 
   return (

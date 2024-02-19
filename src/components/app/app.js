@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Routes, useNavigate} from 'react-router-dom';
 
+import ProtectedRouteElement from "../../utils/ProtectedRoute";
+import AutoriseRouteElement from "../../utils/AutoriseRoute";
 import Main from '../page-main/main/main';
 import Movies from '../page-movies/movies/movies';
 import SavedMovies from '../page-movies/saved-movies/saved-movies';
@@ -11,26 +13,54 @@ import NotFound from '../page-error/not-found';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { ServerErrorContext } from '../../contexts/ServerErrorContext';
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 
 import auth from "../../utils/Auth";
 import mainApi from "../../utils/MainApi";
 
 function App()
 {  
+  const navigate = useNavigate();
+
   const [serverError, setServerError] = useState('');
   const [savedMovies, setSavedMovies] = useState([]);
-  const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(
+  {
+    name: 'Жак-Ив Кусто',
+    email: 'admin@test.ru'
+  });
 
   /////////////////////////////////////////////////////
   //                      USER  
   /////////////////////////////////////////////////////
-  const [currentUser, setCurrentUser] = React.useState(
-    {
-      name: 'Жак-Ив Кусто',
-      email: 'admin@test.ru',
-      loggedIn: false
-    });
 
+  // Проверка на авторизованного пользователя
+  useEffect(() =>
+  {
+    const token = localStorage.getItem('token');
+    if (token)
+    {
+      auth.checkToken(token)
+      .then((res) =>
+      {     
+        if (res) 
+        {
+          setCurrentUser(
+          {
+            name: res.message.name, 
+            email: res.message.email
+          });
+          localStorage.setItem('isLogged', JSON.stringify(true));
+          getSavedMovies();
+        }
+      })
+      .catch((err) => 
+      {
+        setServerError(err.message);
+      });
+    }
+  }, [localStorage.getItem('token')])
+  
   // Регистрация
   function signCreate(email, password, name)
   { 
@@ -53,8 +83,10 @@ function App()
       .then((data) =>
       {
         if (data.token)
-          askAboutMe(data.token);
+        {
+          setCurrentUser(data);
           navigate("/movies", {replace: true})
+        }
       })
       .catch((err) => 
       {
@@ -62,42 +94,16 @@ function App()
       });
   }  
 
-  // Запрос информации о пользователе
-  function askAboutMe(token)
-  {
-    auth.checkToken(token)
-      .then((res) =>
-      {     
-        if (res) 
-        {
-          setCurrentUser(
-          {
-            name: localStorage.getItem('userName'), 
-            email: localStorage.getItem('userEmail'),
-            loggedIn: true
-          });
-
-          getSavedMovies();
-        }
-
-      })
-      .catch((err) => 
-      {
-        setServerError(err.message);
-      });
-  }
-
   // Разавторизация
   function signOut()
   {
-    localStorage.removeItem('token');   
-    localStorage.removeItem('userName'); 
-    localStorage.removeItem('userEmail'); 
+    localStorage.removeItem('token'); 
+    localStorage.removeItem('isLogged');  
     localStorage.removeItem('isShortMovies'); 
     localStorage.removeItem('request');
-    localStorage.removeItem('savedMovies'); 
-    localStorage.removeItem('foundMovies'); 
-    setCurrentUser({name: '', email: '', loggedIn: false});
+    localStorage.removeItem('foundMovies');  
+    setSavedMovies([]);
+    setCurrentUser({name: '', email: ''});
     navigate("/signin");
   }
 
@@ -115,16 +121,6 @@ function App()
         setServerError(err.message);
       });
   }
-
-  // Проверка на авторизованного пользователя
-  useEffect(() =>
-  {
-    if (localStorage.getItem('token'))
-    {
-      const token = localStorage.getItem('token');
-      askAboutMe(token);
-    }
-  }, [localStorage.getItem('token')])
 
   /////////////////////////////////////////////////////
   //                     MOVIES  
@@ -155,7 +151,6 @@ function App()
     mainApi.getMovies()
       .then((data) =>
       {
-        localStorage.setItem('savedMovies', JSON.stringify(data));
         setSavedMovies(data);
       })
       .catch((err) => 
@@ -184,6 +179,7 @@ function App()
     mainApi.deleteCard(movieId)
       .then((data) =>
       {        
+        console.log(data);
         getSavedMovies();
       })
       .catch((err) => 
@@ -192,23 +188,57 @@ function App()
       }) 
   }
 
-
   /////////////////////////////////////////////////////
   //                     ROUTES  
   /////////////////////////////////////////////////////
   return (
     <CurrentUserContext.Provider value={currentUser}>  
-    <ServerErrorContext.Provider value={serverError}>      
+    <ServerErrorContext.Provider value={serverError}>
+    <SavedMoviesContext.Provider value={savedMovies}> 
       <Routes>
         <Route path="/" element={<Main/>} />
-        <Route path="/movies" element={<Movies onSearch={onSearch} savedMovies={savedMovies} addMovie={addMovie} deleteMovie={deleteMovie}/>} />
-        <Route path="/saved-movies" element={<SavedMovies/>} />
-        <Route path="/profile" element={<Profile signOut={signOut} onSubmit={changeProfile}/>} />
-        <Route path="/signup" element={<Register onSubmit={signCreate}/>} />
-        <Route path="/signin" element={<Login onSubmit={signIn}/>} />
-      
+
+        <Route path="/movies" element=
+          {<ProtectedRouteElement 
+          element={Movies} 
+          onSearch={onSearch} 
+          addMovie={addMovie} 
+          deleteMovie={deleteMovie}
+          />} 
+        />
+
+        <Route path="/saved-movies" element=
+          {<ProtectedRouteElement 
+            element={SavedMovies} 
+            onSearch={onSearch} 
+            deleteMovie={deleteMovie}
+          />} 
+        />
+
+        <Route path="/profile" element=
+          {<ProtectedRouteElement 
+          element={Profile} 
+          signOut={signOut} 
+          onSubmit={changeProfile}
+          />} 
+        />
+
+        <Route path="/signup" element=
+          {<AutoriseRouteElement 
+          element={Register} 
+          onSubmit={signCreate}
+          />} 
+        />
+        <Route path="/signin" element=
+          {<AutoriseRouteElement 
+          element={Login} 
+          onSubmit={signIn}
+          />}
+        />
+
         <Route path="*" element={<NotFound />} /> 
       </Routes>
+    </SavedMoviesContext.Provider> 
     </ServerErrorContext.Provider>
     </CurrentUserContext.Provider>
   );

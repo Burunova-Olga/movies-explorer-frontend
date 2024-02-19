@@ -7,6 +7,8 @@ import Checkbutton from '../filter-checkbox/filter-checkbox';
 
 function SearchForm({onSubmit, request})
 {
+  if (request == null)
+    request = '';
   const {formValues, handleChange, setFormValues} = useForm ({ request: request});
  
   const handleSubmit = (e) =>

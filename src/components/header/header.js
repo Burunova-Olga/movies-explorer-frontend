@@ -5,12 +5,9 @@ import { Link } from 'react-router-dom';
 import logo_mini from '../../images/logo-mini.svg';
 import NavigationAutorize from './nav-auth/nav-auth';
 import Navigation from './nav-empty/nav-empty';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Header()
 {
-  const currentUser = React.useContext(CurrentUserContext);
-  
   function TypeHeader(props)
   {
     if (props.isAutorize) 
@@ -19,10 +16,13 @@ function Header()
       return <Navigation />;
   }
 
+  let loggedIn = JSON.parse(localStorage.getItem('isLogged'));
+  if (loggedIn == null) loggedIn = false;
+  
   return (
     <header className="section header">
       <Link to={"/"}  className='header__logo' style={{ backgroundImage: `url(${logo_mini})` }} />
-      <TypeHeader isAutorize={currentUser.loggedIn} />
+      <TypeHeader isAutorize={loggedIn} />
     </header>
   );
 }

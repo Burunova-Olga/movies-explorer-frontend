@@ -11,6 +11,7 @@ function Profile({ signOut, onSubmit })
 {
   const currentUser = React.useContext(CurrentUserContext);
   const serverError = React.useContext(ServerErrorContext);
+  const [isChange, setIsChange] = useState(false);
 
   const {formValues, handleChange, errors, isValid} = useFormWithValidation ({ name: currentUser.name, email: currentUser.email});
   
@@ -33,9 +34,9 @@ function Profile({ signOut, onSubmit })
 
   function onChange()
   {
+    setIsChange(!isChange);
     document.querySelector('.profile__logout').classList.toggle('profile__button-invisible');
     document.querySelector('.profile__change').classList.toggle('profile__button-invisible');
-    document.querySelector('.profile-form__submit').classList.toggle('profile__button-invisible')
   }
 
   return (
@@ -70,12 +71,12 @@ function Profile({ signOut, onSubmit })
                 {serverError}
               </span>
               <input type="submit" name="submit" value="Сохранить" disabled={!isValid}
-              className={`button profile-form__submit profile__button profile__button-invisible  ${!isValid ? 'profile__button-disabled' : ''}`} />
+              className={`button profile-form__submit profile__button ${!isChange ? 'profile__button-invisible' : ''} ${!isValid ? 'profile__button-disabled' : ''}`} />
             </div>
           </form>
           
           <button type="button" onClick={onChange} className="link profile__change profile__button">Редактировать</button>
-          <Link to={"/"} onClick={signOut} className="link profile__logout profile__button">Выйти из аккаунта</Link>
+          <Link to={"/"} onClick={signOut} className="link profile__logout profile__button ">Выйти из аккаунта</Link>
         </div>
       </main>
     </>

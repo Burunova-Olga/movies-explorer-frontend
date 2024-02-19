@@ -184,6 +184,7 @@
   background-color: rgb(32, 32, 32);
   color: rgb(238, 52, 101);
   border: none;
+  text-align: center;
 
   font-weight: 400;
   font-size: 13px;
@@ -211,4 +212,3 @@
 {
   display: none;
 }
-

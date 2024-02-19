@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import MoviesCard from '../movies-card/movies-card';
 
-function MoviesCardList({cards, countShowingCards, savedMovies, addMovie, deleteMovie})
+function MoviesCardList({cards, countShowingCards, addMovie, deleteMovie})
 {  
   if (Array.isArray(cards))
   {
@@ -13,10 +13,15 @@ function MoviesCardList({cards, countShowingCards, savedMovies, addMovie, delete
         {
           showingCards.map((item) =>
           {
+            let key = 0;
+            if (window.location.pathname == "/movies")
+              key = item.id;
+            else
+              key = item.movieId;
+              
             return (<MoviesCard
               card={item}
-              key={item.id}
-              savedMovies={savedMovies}
+              key={key}
               addMovie={addMovie}
               deleteMovie={deleteMovie}
             />)
