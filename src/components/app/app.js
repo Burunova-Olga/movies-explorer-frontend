@@ -131,7 +131,8 @@ function App()
     const filtrMovies = [];
     movies.forEach((item) =>
     {
-      if (item.nameRU.includes(request) || item.nameEN.includes(request))
+      if (item.nameRU.toLowerCase().includes(request.toLowerCase()) || 
+          item.nameEN.toLowerCase().includes(request.toLowerCase()))
       {                
         if (isShort)
         {
