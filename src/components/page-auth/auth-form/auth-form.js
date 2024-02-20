@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState} from 'react';
 
 import { useFormWithValidation } from "../../../hooks/UseForm";
 import { Link } from 'react-router-dom';
@@ -10,10 +10,12 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
 { 
   const serverError = React.useContext(ServerErrorContext);
   const {formValues, handleChange, errors, isValid} = useFormWithValidation ({ name: '', email: '', password: ''});
-    
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const handleSubmit = (e) =>
   {    
     e.preventDefault();
+    setIsSubmit(true);
 
     if (!formValues.email || !formValues.password || (isRegister && !formValues.name))    
       return;
@@ -57,7 +59,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
           </div>
           
           <div> 
-            <span className={`error submit-error ${serverError!="" ? 'error_visible' : ''}`}>
+            <span className={`error submit-error ${(serverError!="" && isSubmit && serverError!=null) ? 'error_visible' : ''}`}>
               {serverError}
             </span>
             <input type="submit" name="submit" value={submmitText} disabled={!isValid}
