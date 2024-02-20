@@ -45,17 +45,17 @@ function Movies({onSearch, addMovie, deleteMovie})
   }, [])
 
   // Количество отображаемых карточек в зависимости от ширины экрана
-  function getCountMovies()
+  function getCountMovies(isNeedUpdate = false)
   {
     if (window.innerWidth > 1279)
     {
-      if (typeScreen != "desktop")
+      if (typeScreen != "desktop" || isNeedUpdate)
       {
         setTypeScreen("desktop");
         setCountShowingCards(12);
       }
     }
-    else if (window.innerWidth > 650) 
+    else if (window.innerWidth > 650 || isNeedUpdate) 
     {
       if (typeScreen != "table")
       {
@@ -65,7 +65,7 @@ function Movies({onSearch, addMovie, deleteMovie})
     }
     else 
     {
-      if (typeScreen != "mobile")
+      if (typeScreen != "mobile" || isNeedUpdate)
       {
         setTypeScreen("mobile");
         setCountShowingCards(5);
@@ -93,32 +93,23 @@ function Movies({onSearch, addMovie, deleteMovie})
   {
     localStorage.setItem('isShortMovies', isShortMovies);
     localStorage.setItem('request', request);
+    getCountMovies(true);
     getMovies();
   }
 
-  // Запрос фильмов от сервера
-  function getMovies()
-  {
-    document.querySelector('.found-error').classList.remove('error_visible');
-    document.querySelector('.server-error').classList.remove('error_visible');
+  // Запрос всех фильмов
+  useEffect(() =>
+  {    
+    getAllMovies();    
+  }, [localStorage.getItem('allMovies')])
 
+  function getAllMovies()
+  {
     setIsPreloaderShow(true);
     moviesApi.getMovies()
-      .then((moviesData) =>
+      .then((data) =>
       {
-        const filtrMovies = onSearch(
-        {
-          movies: moviesData,
-          request: localStorage.getItem('request'),
-          isShort: JSON.parse(localStorage.getItem('isShortMovies')),
-        })
-
-        // Если поиск не дал результатов
-        if (filtrMovies.length === 0)
-          document.querySelector('.found-error').classList.add('error_visible');
-
-        localStorage.setItem('foundMovies', JSON.stringify(filtrMovies));
-        setCards(filtrMovies);
+        localStorage.setItem('allMovies', JSON.stringify(data)); 
       })
       .catch((err) =>
       {
@@ -127,7 +118,33 @@ function Movies({onSearch, addMovie, deleteMovie})
       .finally(() =>
       {
         setIsPreloaderShow(false);
-      })
+      });  
+  }
+
+  // Запрос фильмов от сервера
+  function getMovies()
+  {
+    document.querySelector('.found-error').classList.remove('error_visible');
+    document.querySelector('.server-error').classList.remove('error_visible');
+  
+    // Если список всех фильмов пуст - надо сделать запрос
+    if (localStorage.getItem('allMovies') === null)
+      getAllMovies();
+
+    // Фильтр по всем фильмам
+    const filtrMovies = onSearch(
+    {
+      movies: JSON.parse(localStorage.getItem('allMovies')),
+      request: localStorage.getItem('request'),
+      isShort: JSON.parse(localStorage.getItem('isShortMovies')),
+    })
+
+    // Если поиск не дал результатов
+    if (filtrMovies.length === 0)
+      document.querySelector('.found-error').classList.add('error_visible');
+
+    localStorage.setItem('foundMovies', JSON.stringify(filtrMovies));
+    setCards(filtrMovies);    
   }
 
   // Открытие дополнительного ряда карточек

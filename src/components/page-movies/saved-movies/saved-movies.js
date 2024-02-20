@@ -12,16 +12,24 @@ function SavedMovies({onSearch, deleteMovie})
 {  
   const savedMovies = React.useContext(SavedMoviesContext);
   const [cards, setCards] = useState([]);  
+  const [currRequest, setCurrRequest] = useState(
+    {
+      request: '',
+      isShortMovies: false
+    }
+  );
 
   useEffect(() =>
   {
-    setCards(savedMovies);
-  }, [savedMovies])
+    foundMovies({request: currRequest.request,isShortMovies: currRequest.isShortMovies});
+  }, [savedMovies]);
 
   // Запрос фильмов от сервера
   function foundMovies({request, isShortMovies})
   {
     document.querySelector('.found-error').classList.remove('error_visible');
+
+    setCurrRequest({request ,isShortMovies});    
 
     const filtrMovies = onSearch(
     {
@@ -34,7 +42,7 @@ function SavedMovies({onSearch, deleteMovie})
     if (filtrMovies.length === 0)
       document.querySelector('.found-error').classList.add('error_visible');
 
-    setCards(filtrMovies);      
+    setCards(filtrMovies);  
   }
 
   return (

@@ -162,7 +162,7 @@ function App()
         setServerError(err.message);
       });
   }
-
+  
   // Пользователь сохранил фильм
   function addMovie({movie})
   {
@@ -183,7 +183,6 @@ function App()
     mainApi.deleteCard(movieId)
       .then((data) =>
       {        
-        console.log(data);
         getSavedMovies();
       })
       .catch((err) => 
