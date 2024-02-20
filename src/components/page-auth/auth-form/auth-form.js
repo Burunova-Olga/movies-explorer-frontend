@@ -9,9 +9,8 @@ import { ServerErrorContext } from '../../../contexts/ServerErrorContext';
 function AuthForm({isRegister, title, submmitText, questionText, linkText, link, onSubmit})
 { 
   const serverError = React.useContext(ServerErrorContext);
-
   const {formValues, handleChange, errors, isValid} = useFormWithValidation ({ name: '', email: '', password: ''});
-  
+    
   const handleSubmit = (e) =>
   {    
     e.preventDefault();
@@ -22,7 +21,6 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
     onSubmit(formValues.email, formValues.password, formValues.name);
   } 
   
-
   return (
     <main className="auth-form">
         <Link to={"/"} className='auth-form__logo' style={{ backgroundImage: `url(${logo})` }} />
@@ -37,7 +35,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
                   <input type="text" className='auth-form__input' name="name" id="input-name" 
                     value={formValues.name} onInput={handleChange} placeholder="Введите имя" 
                     minLength="2" maxLength="40" required pattern="[a-zA-Zа-яА-ЯёЁ\s\-]*"/>
-                  <span className={`error input-error ${errors.name!="" ? 'error_visible' : ''}`} >{errors.name}</span>
+                  <span className={`error input-error ${(errors.name!="" && errors.name!=null) ? 'error_visible' : ''}`} >{errors.name}</span>
                 </fieldset>
             }
 
@@ -45,8 +43,8 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
               <p className='auth-form__comment'>E-mail</p>
               <input type="email" className="auth-form__input" name="email" id="input-email"
                 value={formValues.email} onInput={handleChange} placeholder="Ввведите почту" 
-                minLength="2" maxLength="40" required />
-              <span className={`error input-error ${errors.email!="" ? 'error_visible' : ''}`}>{errors.email}</span>
+                minLength="2" maxLength="40" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+              <span className={`error input-error ${(errors.email!="" && errors.email!=null) ? 'error_visible' : ''}`}>{errors.email}</span>
             </fieldset>
 
             <fieldset className='auth-form__line'>   
@@ -54,7 +52,7 @@ function AuthForm({isRegister, title, submmitText, questionText, linkText, link,
               <input type="password" className="auth-form__input" name="password" id="input-password"
                 value={formValues.password} onInput={handleChange} placeholder="Введите пароль" 
                 minLength="8" maxLength="20" required />
-              <span className={`error input-error ${errors.password!="" ? 'error_visible' : ''}`}>{errors.password}</span>
+              <span className={`error input-error ${(errors.password!="" && errors.password!=null)  ? 'error_visible' : ''}`}>{errors.password}</span>
             </fieldset>
           </div>
           

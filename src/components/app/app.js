@@ -57,6 +57,7 @@ function App()
       .catch((err) => 
       {
         setServerError(err.message);
+        signOut();
       });
     }
   }, [localStorage.getItem('token')])
