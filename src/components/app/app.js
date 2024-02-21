@@ -86,8 +86,10 @@ function App()
       .then((data) =>
       {
         if (data.token)
-        {
+        {          
           setCurrentUser(data);
+          localStorage.setItem('isLogged', JSON.stringify(true));
+          getSavedMovies();
           navigate("/movies", {replace: true})
         }
       })

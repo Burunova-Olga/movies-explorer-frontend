@@ -5,6 +5,7 @@ function ProtectedRouteElement ({ element: Component, ...props  })
 {
   let loggedIn = JSON.parse(localStorage.getItem('isLogged'));
   if (loggedIn == null) loggedIn = false;
+  console.log(loggedIn);
   
   return (
     loggedIn ? <Component {...props} /> : <Navigate to="/" replace/>
