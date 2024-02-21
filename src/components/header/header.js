@@ -16,17 +16,15 @@ function Header()
       return <Navigation />;
   }
 
+  let loggedIn = JSON.parse(localStorage.getItem('isLogged'));
+  if (loggedIn == null) loggedIn = false;
+  
   return (
     <header className="section header">
       <Link to={"/"}  className='header__logo' style={{ backgroundImage: `url(${logo_mini})` }} />
-      <NavigationAutorize />
+      <TypeHeader isAutorize={loggedIn} />
     </header>
   );
 }
 
 export default Header;
-
-/*
-      <TypeHeader isAutorize={true} />
-    
-*/

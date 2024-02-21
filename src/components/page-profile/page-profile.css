@@ -43,6 +43,23 @@
 }
 
 /*********************************************/
+.notification
+{
+  margin: 20px auto 0;
+  padding: 0;
+
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  color:rgb(86, 86, 86);
+  display: none;
+}
+.notification_visible
+{
+  display: block;
+}
+
+/*********************************************/
 
 .profile-form
 {
@@ -184,6 +201,7 @@
   background-color: rgb(32, 32, 32);
   color: rgb(238, 52, 101);
   border: none;
+  text-align: center;
 
   font-weight: 400;
   font-size: 13px;
@@ -200,6 +218,12 @@
 }
 
 /*********************************************/
+
+.profile__button-disabled
+{
+  cursor: default;
+  background-color: rgb(47, 47, 47);
+}
 
 .profile__button-invisible
 {

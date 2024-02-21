@@ -1,13 +1,23 @@
 // Переключатель
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
-function Checkbutton()
+function Checkbutton({onClick})
 {  
+  useEffect(() =>
+  {
+    const currentPath = window.location.pathname;
+    if (currentPath == "/movies" && localStorage.getItem('isShortMovies') != null )
+      {
+        const isChecked = JSON.parse(localStorage.getItem('isShortMovies'));
+        document.querySelector('.checkbutton__input').checked = isChecked;        
+      }
+  }, [])
+
   return (
     <label className="checkbutton" htmlFor="short-films">
       <input type="checkbox" name="short-films" value="short-films" id="short-films" 
-        className="checkbutton__input" defaultChecked/>
+        className="checkbutton__input" onClick={onClick}/>
       <span className="checkbutton__pseudo" />
       <span className="checkbutton__label-text">Короткометражки</span>
     </label>     

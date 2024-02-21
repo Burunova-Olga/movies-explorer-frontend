@@ -145,6 +145,7 @@
   box-sizing: border-box;
 
   background-color: rgb(47, 47, 47);
+  color: rgb(255, 255, 255);
   
   font-weight: 400;
   font-size: 13px;
@@ -179,6 +180,12 @@
 
   color: rgb(255, 255, 255);
   background-color: rgb(66, 133, 244);
+}
+
+.auth-form__submit-disabled
+{
+  cursor: default;
+  background-color: rgb(47, 47, 47);
 }
 
 @media screen and (max-width: 420px)

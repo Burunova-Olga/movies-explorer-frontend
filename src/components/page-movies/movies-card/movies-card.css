@@ -194,7 +194,7 @@
   background-image: url(../../../images/save.svg);
 }
 
-.card__button:hover .card__save
+.card__saved
 { 
   background-image: url(../../../images/saved.svg);
 }
@@ -218,5 +218,14 @@
   .card__pic
   {
     margin: 7px 10px 0 0;
+  }
+}
+
+@media screen and (max-width: 650px)
+{
+  .card__delete
+  { 
+    background-size: 12px 12px;
+    background-image: url(../../../images/delete.svg);
   }
 }
