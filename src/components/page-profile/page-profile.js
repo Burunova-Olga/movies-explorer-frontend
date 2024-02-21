@@ -35,43 +35,46 @@ function Profile({ signOut, onSubmit })
     formValues.name = currentUser.name;
     formValues.email = currentUser.email;
 
+    // Данные профиля успешно обновлены
+    if (isSaved)
+    {
+      document.querySelector('.notification').classList.add('notification_visible');
+      setIsSaved(false);
+      onChangeMode();
+    }
   }, [currentUser])
   
   // Обработка ответа сервера
   useEffect(() =>
   {
-    if (serverError!=null)
+    if (serverError!=null && serverError != "")
     {
-      if (serverError === "" && isSaved)
-      {
-        document.querySelector('.notification').classList.add('notification_visible');
-        document.querySelector('.submit-error').classList.remove('error_visible');
-        onChange();
-      }
-      else 
-      {
-        document.querySelector('.notification').classList.remove('notification_visible');
-        document.querySelector('.submit-error').classList.add('error_visible');
-      }
-    }
+      document.querySelector('.notification').classList.remove('notification_visible');
+      document.querySelector('.submit-error').classList.add('error_visible');
+    }        
   }, [serverError, isSaved])
 
   // Переключение режима просмотра/изменения
-  function onChange()
+  function onChangeMode()
   {
     setIsChangeMode(!isChangeMode);
+    setIsSaved(false);
+    setIsChange(false);
     document.querySelector('.profile__logout').classList.toggle('profile__button-invisible');
     document.querySelector('.profile__change').classList.toggle('profile__button-invisible');
+    document.querySelector('.submit-error').classList.remove('error_visible');
   }
 
   // Изменение данных в полях ввода
   function handleInput()
   {
     setIsSaved(false);
+    document.querySelector('.notification').classList.remove('notification_visible');
+    document.querySelector('.submit-error').classList.remove('error_visible');
 
     const name = document.getElementById('input-name').value;
     const email = document.getElementById('input-email').value;
-    setIsChange(name!= currentUser.name || email != currentUser.email)
+    setIsChange(name!= currentUser.name || email != currentUser.email);
   }
 
   return (
@@ -111,7 +114,7 @@ function Profile({ signOut, onSubmit })
             </div>
           </form>
           
-          <button type="button" onClick={onChange} className="link profile__change profile__button">Редактировать</button>
+          <button type="button" onClick={onChangeMode} className="link profile__change profile__button">Редактировать</button>
           <Link to={"/"} onClick={signOut} className="link profile__logout profile__button ">Выйти из аккаунта</Link>
         </div>
       </main>

@@ -45,6 +45,7 @@ function App()
       {     
         if (res) 
         {
+          console.log("check");
           setCurrentUser(
           {
             name: res.message.name, 
@@ -107,6 +108,7 @@ function App()
     localStorage.removeItem('isShortMovies'); 
     localStorage.removeItem('request');
     localStorage.removeItem('foundMovies');  
+    localStorage.removeItem('allMovies'); 
     setSavedMovies([]);
     setCurrentUser({name: '', email: ''});
     navigate("/signin");
@@ -118,7 +120,8 @@ function App()
     setServerError('');
     mainApi.setUserInfo(newName, newEmail)
       .then((result) =>
-      {
+      {console.log("result");
+      console.log(result);
         setCurrentUser(result);
       })
       .catch((err) => 
