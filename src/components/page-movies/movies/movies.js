@@ -17,6 +17,147 @@ function Movies({onSearch, addMovie, deleteMovie})
   const [countShowingCards, setCountShowingCards] = useState(12);
   const [isMoreShow, setMoreShow] = useState(false);
   
+  // Отслеживание изменения размера
+  React.useEffect(() => 
+  {    
+    var resize;
+    function resizer(event)
+    { 
+      clearTimeout(resize);
+      resize = setTimeout(getCountMovies, 500);
+    }    
+    
+    window.addEventListener('resize', resizer);
+    
+    return () => 
+    {
+      window.removeEventListener('resize', resizer);
+    };
+  });
+  
+  // Количество отображаемых карточек в зависимости от ширины экрана
+  function getCountMovies(isNeedUpdate = false)
+  {
+    console.log(isNeedUpdate + " " + typeScreen + " " + window.innerWidth); 
+    if (window.innerWidth > 1279)
+    {
+      if (typeScreen != "desktop" || isNeedUpdate)
+      {
+        setTypeScreen("desktop");
+        setCountShowingCards(12);
+      }
+    }
+    else if (window.innerWidth > 650) 
+    {
+      if (typeScreen != "table" || isNeedUpdate)
+      {
+        console.log("update");
+        setTypeScreen("table");
+        setCountShowingCards(8);
+      }
+    }
+    else 
+    {
+      if (typeScreen != "mobile" || isNeedUpdate)
+      {
+        setTypeScreen("mobile");
+        setCountShowingCards(5);
+      }
+    }    
+  }
+
+  // Нужно ли отображение "Ещё"
+  useEffect(() =>
+  {
+    setMoreShow(countShowingCards < cards.length);
+  }, [cards, countShowingCards])
+
+  // Открытие дополнительного ряда карточек
+  function moreClick() 
+  {    
+    let delta = 0;
+    switch (typeScreen)
+    {
+      case 'desktop':
+        delta = 3;
+        break;
+
+      case 'table':
+        delta = 2;
+        break;
+
+      case 'mobile':
+        delta = 2;
+        break;
+    }
+
+    setCountShowingCards(countShowingCards + delta);
+  }
+
+  ///////////////////////////////////////////////
+  //                    ПОИСК
+  ///////////////////////////////////////////////
+
+  // Пользователь прислал новый запрос
+  function updateRequest({request, isShortMovies})
+  {
+    localStorage.setItem('isShortMovies', isShortMovies);
+    localStorage.setItem('request', request);
+    getMovies();
+  }
+
+  // Запрос фильмов от сервера
+  function getMovies()
+  {
+    document.querySelector('.found-error').classList.remove('error_visible');
+    document.querySelector('.server-error').classList.remove('error_visible');
+
+    // Если список всех фильмов пуст - надо сделать запрос
+    if (localStorage.getItem('allMovies') === null)
+      getAllMovies();
+    else 
+      filtrMovies();
+  }
+
+  function filtrMovies()
+  {
+    // Фильтр по всем фильмам
+    const filtrMovies = onSearch(
+      {
+        movies: JSON.parse(localStorage.getItem('allMovies')),
+        request: localStorage.getItem('request'),
+        isShort: JSON.parse(localStorage.getItem('isShortMovies')),
+      })
+
+      // Если поиск не дал результатов
+      if (filtrMovies.length === 0)
+        document.querySelector('.found-error').classList.add('error_visible');
+
+      localStorage.setItem('foundMovies', JSON.stringify(filtrMovies));
+      setCards(filtrMovies);
+      getCountMovies(true);    
+  }
+
+  // Запрос фильмов от api
+  function getAllMovies()
+  {
+    setIsPreloaderShow(true);
+    moviesApi.getMovies()
+      .then((data) =>
+      {
+        localStorage.setItem('allMovies', JSON.stringify(data));
+        filtrMovies();
+      })
+      .catch((err) =>
+      {
+        document.querySelector('.server-error').classList.add('error_visible');
+      })
+      .finally(() =>
+      {
+        setIsPreloaderShow(false);
+      });  
+  }
+
   // При загрузке страницы
   useEffect(() =>
   {    
@@ -44,131 +185,7 @@ function Movies({onSearch, addMovie, deleteMovie})
     getCountMovies();
   }, [])
 
-  // Количество отображаемых карточек в зависимости от ширины экрана
-  function getCountMovies(isNeedUpdate = false)
-  {
-    if (window.innerWidth > 1279)
-    {
-      if (typeScreen != "desktop" || isNeedUpdate)
-      {
-        setTypeScreen("desktop");
-        setCountShowingCards(12);
-      }
-    }
-    else if (window.innerWidth > 650 || isNeedUpdate) 
-    {
-      if (typeScreen != "table")
-      {
-        setTypeScreen("table");
-        setCountShowingCards(8);
-      }
-    }
-    else 
-    {
-      if (typeScreen != "mobile" || isNeedUpdate)
-      {
-        setTypeScreen("mobile");
-        setCountShowingCards(5);
-      }
-    }    
-  }
-  
-  // Событие отслеживания изменения экрана
-  var resize;
-  window.addEventListener('resize', (e) =>
-  {
-    clearTimeout(resize);
-    resize = setTimeout(getCountMovies, 500);
-  });
-
-  // Нужно ли отображение "Ещё"
-  useEffect(() =>
-  {
-    setMoreShow(countShowingCards < cards.length);
-  }, [cards, countShowingCards])
-
-
-  // Пользователь прислал новый запрос
-  function updateRequest({request, isShortMovies})
-  {
-    localStorage.setItem('isShortMovies', isShortMovies);
-    localStorage.setItem('request', request);
-    getCountMovies(true);
-    getMovies();
-  }
-
-  // Запрос всех фильмов
-  useEffect(() =>
-  {    
-    getAllMovies();    
-  }, [localStorage.getItem('allMovies')])
-
-  function getAllMovies()
-  {
-    setIsPreloaderShow(true);
-    moviesApi.getMovies()
-      .then((data) =>
-      {
-        localStorage.setItem('allMovies', JSON.stringify(data)); 
-      })
-      .catch((err) =>
-      {
-        document.querySelector('.server-error').classList.add('error_visible');
-      })
-      .finally(() =>
-      {
-        setIsPreloaderShow(false);
-      });  
-  }
-
-  // Запрос фильмов от сервера
-  function getMovies()
-  {
-    document.querySelector('.found-error').classList.remove('error_visible');
-    document.querySelector('.server-error').classList.remove('error_visible');
-  
-    // Если список всех фильмов пуст - надо сделать запрос
-    if (localStorage.getItem('allMovies') === null)
-      getAllMovies();
-
-    // Фильтр по всем фильмам
-    const filtrMovies = onSearch(
-    {
-      movies: JSON.parse(localStorage.getItem('allMovies')),
-      request: localStorage.getItem('request'),
-      isShort: JSON.parse(localStorage.getItem('isShortMovies')),
-    })
-
-    // Если поиск не дал результатов
-    if (filtrMovies.length === 0)
-      document.querySelector('.found-error').classList.add('error_visible');
-
-    localStorage.setItem('foundMovies', JSON.stringify(filtrMovies));
-    setCards(filtrMovies);    
-  }
-
-  // Открытие дополнительного ряда карточек
-  function moreClick() 
-  {    
-    let delta = 0;
-    switch (typeScreen)
-    {
-      case 'desktop':
-        delta = 3;
-        break;
-
-      case 'table':
-        delta = 2;
-        break;
-
-      case 'mobile':
-        delta = 2;
-        break;
-    }
-
-    setCountShowingCards(countShowingCards + delta);
-  }
-
+  console.log(countShowingCards);
   return (
     <>
       <Header />
