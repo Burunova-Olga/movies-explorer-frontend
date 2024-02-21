@@ -97,7 +97,7 @@ function Profile({ signOut, onSubmit })
                 <p>E-mail</p>
                 <input type="email" className="profile-form__input" name="email" id="input-email"
                   value={formValues.email} onInput={handleInput} onChange={handleChange} placeholder='Введите новую почту'
-                  minLength="2" maxLength="40" required />              
+                  minLength="2" maxLength="40" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>              
                   <span className={`error input-error ${(errors.email!="" && errors.email!=null) ? 'error_visible' : ''}`}>{errors.email}</span>
               </fieldset>
             </div>
